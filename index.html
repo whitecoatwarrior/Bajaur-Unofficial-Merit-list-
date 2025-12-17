@@ -1559,6 +1559,11 @@
             font-weight: 600;
         }
 
+        .merit-father {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
         .merit-score {
             font-weight: 600;
             color: var(--success);
@@ -1575,6 +1580,44 @@
             font-weight: 600;
             color: var(--primary);
             text-align: center;
+        }
+
+        /* Merit List Search Styles */
+        .merit-search-container {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 6.48px;
+            margin-bottom: 6.48px;
+            box-shadow: var(--shadow);
+        }
+
+        .search-row {
+            display: flex;
+            gap: 4.86px;
+            margin-bottom: 4.86px;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .search-input input {
+            width: 100%;
+            padding: 4.05px 4.86px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 0.486rem;
+        }
+
+        .search-stats {
+            font-size: 0.486rem;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 3.24px;
+            background: var(--light);
+            border-radius: var(--border-radius);
         }
 
         /* Free Materials Section */
@@ -1713,6 +1756,10 @@
             .material-links {
                 grid-template-columns: 1fr;
             }
+
+            .search-row {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 600px) {
@@ -1773,6 +1820,12 @@
 
             .merit-table th, .merit-table td {
                 padding: 3.24px;
+            }
+
+            .merit-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
             }
         }
 
@@ -1993,430 +2046,40 @@
                         <h3><i class="fas fa-trophy"></i> HEC Unofficial Merit – Bajaur (Till Now)</h3>
                         <p><strong>(Proposed by stoic 😊)</strong></p>
                         
-                        <table class="merit-table">
+                        <!-- Search Container -->
+                        <div class="merit-search-container">
+                            <div class="search-row">
+                                <div class="search-input">
+                                    <input type="text" id="homepage-name-search" placeholder="Search by name...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="homepage-aggregate-search" placeholder="Search by HEC aggregate...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="homepage-father-search" placeholder="Search by father name...">
+                                </div>
+                                <button class="btn btn-primary" id="homepage-clear-search">
+                                    <i class="fas fa-times"></i> Clear
+                                </button>
+                            </div>
+                            <div class="search-stats" id="homepage-search-stats">
+                                Showing all students
+                            </div>
+                        </div>
+                        
+                        <table class="merit-table" id="homepage-merit-table">
                             <thead>
                                 <tr>
                                     <th>Rank</th>
                                     <th>Name</th>
+                                    <th>Father Name</th>
                                     <th>MDCAT Score</th>
                                     <th>HEC Aggregate</th>
                                     <th>FATA Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="merit-rank">1</td>
-                                    <td class="merit-name">Murad Ali 👑🐐</td>
-                                    <td class="merit-score">93.71</td>
-                                    <td class="merit-aggregate">88.23</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">2</td>
-                                    <td class="merit-name">Arsalan Khan</td>
-                                    <td class="merit-score">94.25</td>
-                                    <td class="merit-aggregate">86.90</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">3</td>
-                                    <td class="merit-name">Hamayoun Khan</td>
-                                    <td class="merit-score">91.94</td>
-                                    <td class="merit-aggregate">86.00</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">4</td>
-                                    <td class="merit-name">Badshah Husain</td>
-                                    <td class="merit-score">92.934</td>
-                                    <td class="merit-aggregate">84.59</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">5</td>
-                                    <td class="merit-name">Muhammad Zeeshan</td>
-                                    <td class="merit-score">94.946</td>
-                                    <td class="merit-aggregate">84.28</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">6</td>
-                                    <td class="merit-name">Jawad Kamal</td>
-                                    <td class="merit-score">87.08</td>
-                                    <td class="merit-aggregate">84.03</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">7</td>
-                                    <td class="merit-name">Muhammad Khubaib</td>
-                                    <td class="merit-score">92.88</td>
-                                    <td class="merit-aggregate">84.00</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">8</td>
-                                    <td class="merit-name">Nizam Ullah</td>
-                                    <td class="merit-score">89.53</td>
-                                    <td class="merit-aggregate">83.23</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">9</td>
-                                    <td class="merit-name">Hamid Ullah</td>
-                                    <td class="merit-score">92.20</td>
-                                    <td class="merit-aggregate">82.80</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">10</td>
-                                    <td class="merit-name">Sohail Ahmad</td>
-                                    <td class="merit-score">92.69</td>
-                                    <td class="merit-aggregate">82.64</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">11</td>
-                                    <td class="merit-name">Farhan Ullah</td>
-                                    <td class="merit-score">89.42</td>
-                                    <td class="merit-aggregate">82.40</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">12</td>
-                                    <td class="merit-name">Hanif Ullah</td>
-                                    <td class="merit-score">93.77</td>
-                                    <td class="merit-aggregate">82.38</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">13</td>
-                                    <td class="merit-name">Wasid Iqbal</td>
-                                    <td class="merit-score">89.39</td>
-                                    <td class="merit-aggregate">82.34</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">14</td>
-                                    <td class="merit-name">Fazal Malik</td>
-                                    <td class="merit-score">91.83</td>
-                                    <td class="merit-aggregate">82.235</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">15</td>
-                                    <td class="merit-name">Amir Maawia</td>
-                                    <td class="merit-score">91.49</td>
-                                    <td class="merit-aggregate">82.102</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">16</td>
-                                    <td class="merit-name">Mian Sana Ullah</td>
-                                    <td class="merit-score">90.823</td>
-                                    <td class="merit-aggregate">82.09</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">17</td>
-                                    <td class="merit-name">Yahya Khan</td>
-                                    <td class="merit-score">92.18</td>
-                                    <td class="merit-aggregate">81.81</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">18</td>
-                                    <td class="merit-name">Sohail Ahmad (II)</td>
-                                    <td class="merit-score">89.78</td>
-                                    <td class="merit-aggregate">81.69</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">19</td>
-                                    <td class="merit-name">Subhanullah</td>
-                                    <td class="merit-score">89.99</td>
-                                    <td class="merit-aggregate">81.60</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">20</td>
-                                    <td class="merit-name">Muhammad Tariq</td>
-                                    <td class="merit-score">91.79</td>
-                                    <td class="merit-aggregate">81.39</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">21</td>
-                                    <td class="merit-name">Uzair Khan</td>
-                                    <td class="merit-score">92.54</td>
-                                    <td class="merit-aggregate">81.27</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">22</td>
-                                    <td class="merit-name">Imad Khan</td>
-                                    <td class="merit-score">92.66</td>
-                                    <td class="merit-aggregate">81.19</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">23</td>
-                                    <td class="merit-name">Fazil Rehman</td>
-                                    <td class="merit-score">90.33</td>
-                                    <td class="merit-aggregate">81.156</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">24</td>
-                                    <td class="merit-name">Nasar Khan</td>
-                                    <td class="merit-score">92.18</td>
-                                    <td class="merit-aggregate">81.08</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">25</td>
-                                    <td class="merit-name">Noor Ullah</td>
-                                    <td class="merit-score">92.60</td>
-                                    <td class="merit-aggregate">80.90</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">26</td>
-                                    <td class="merit-name">Junaid Ahmad</td>
-                                    <td class="merit-score">89.70</td>
-                                    <td class="merit-aggregate">80.85</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">27</td>
-                                    <td class="merit-name">Khalid Ahmad</td>
-                                    <td class="merit-score">92.05</td>
-                                    <td class="merit-aggregate">80.826</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">28</td>
-                                    <td class="merit-name">Ibad Ullah Khan</td>
-                                    <td class="merit-score">89.10</td>
-                                    <td class="merit-aggregate">80.80</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">29</td>
-                                    <td class="merit-name">Suliman Amir Khan</td>
-                                    <td class="merit-score">92.14</td>
-                                    <td class="merit-aggregate">80.78</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">30</td>
-                                    <td class="merit-name">Amir Saeed</td>
-                                    <td class="merit-score">83.30</td>
-                                    <td class="merit-aggregate">80.66</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">31</td>
-                                    <td class="merit-name">Muhammad Shakeel</td>
-                                    <td class="merit-score">90.72</td>
-                                    <td class="merit-aggregate">80.50</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">32</td>
-                                    <td class="merit-name">Najeeb Ali</td>
-                                    <td class="merit-score">88.88</td>
-                                    <td class="merit-aggregate">80.44</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">33</td>
-                                    <td class="merit-name">Muhammad Kamran</td>
-                                    <td class="merit-score">91.056</td>
-                                    <td class="merit-aggregate">80.265</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">34</td>
-                                    <td class="merit-name">Sami Ullah</td>
-                                    <td class="merit-score">90.713</td>
-                                    <td class="merit-aggregate">80.138</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">35</td>
-                                    <td class="merit-name">Nasirullah</td>
-                                    <td class="merit-score">90.43</td>
-                                    <td class="merit-aggregate">79.87</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">36</td>
-                                    <td class="merit-name">Abdullah Khan</td>
-                                    <td class="merit-score">92.098</td>
-                                    <td class="merit-aggregate">79.79</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">37</td>
-                                    <td class="merit-name">Haroon Rashid</td>
-                                    <td class="merit-score">88.60</td>
-                                    <td class="merit-aggregate">79.74</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">38</td>
-                                    <td class="merit-name">Rehan Ullah</td>
-                                    <td class="merit-score">90.70</td>
-                                    <td class="merit-aggregate">79.72</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">39</td>
-                                    <td class="merit-name">Farhad Ullah</td>
-                                    <td class="merit-score">90.50</td>
-                                    <td class="merit-aggregate">79.63</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">40</td>
-                                    <td class="merit-name">Murad Ali (II)</td>
-                                    <td class="merit-score">83.00</td>
-                                    <td class="merit-aggregate">79.50</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">41</td>
-                                    <td class="merit-name">Asad Ullah</td>
-                                    <td class="merit-score">90.69</td>
-                                    <td class="merit-aggregate">79.381</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">42</td>
-                                    <td class="merit-name">Farhan Khan</td>
-                                    <td class="merit-score">85.50</td>
-                                    <td class="merit-aggregate">79.25</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">43</td>
-                                    <td class="merit-name">Salam Alaikum</td>
-                                    <td class="merit-score">90.96</td>
-                                    <td class="merit-aggregate">79.18</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">44</td>
-                                    <td class="merit-name">Zubair Khan</td>
-                                    <td class="merit-score">90.80</td>
-                                    <td class="merit-aggregate">79.06</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">45</td>
-                                    <td class="merit-name">Abbas Khan</td>
-                                    <td class="merit-score">91.50</td>
-                                    <td class="merit-aggregate">78.65</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">46</td>
-                                    <td class="merit-name">M. Danyal</td>
-                                    <td class="merit-score">89.60</td>
-                                    <td class="merit-aggregate">78.60</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">47</td>
-                                    <td class="merit-name">Khobaib Khan</td>
-                                    <td class="merit-score">—</td>
-                                    <td class="merit-aggregate">78.56</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">48</td>
-                                    <td class="merit-name">Muhammad Wajid</td>
-                                    <td class="merit-score">90.671</td>
-                                    <td class="merit-aggregate">78.50</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">49</td>
-                                    <td class="merit-name">Jehanzeb</td>
-                                    <td class="merit-score">90.33</td>
-                                    <td class="merit-aggregate">78.49</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">50</td>
-                                    <td class="merit-name">Aziz Ul Haq</td>
-                                    <td class="merit-score">92.45</td>
-                                    <td class="merit-aggregate">78.25</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">51</td>
-                                    <td class="merit-name">Muhammad Idrees</td>
-                                    <td class="merit-score">91.333</td>
-                                    <td class="merit-aggregate">78.125</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">52</td>
-                                    <td class="merit-name">Adnan</td>
-                                    <td class="merit-score">89.60</td>
-                                    <td class="merit-aggregate">78.15</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">53</td>
-                                    <td class="merit-name">Adnan Ahmad</td>
-                                    <td class="merit-score">89.51</td>
-                                    <td class="merit-aggregate">77.45</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">54</td>
-                                    <td class="merit-name">Sajjad Ahmad</td>
-                                    <td class="merit-score">86.256</td>
-                                    <td class="merit-aggregate">77.16</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">55</td>
-                                    <td class="merit-name">Habib Ullah</td>
-                                    <td class="merit-score">86.56</td>
-                                    <td class="merit-aggregate">77.09</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">56</td>
-                                    <td class="merit-name">Abuzar Khan</td>
-                                    <td class="merit-score">90.29</td>
-                                    <td class="merit-aggregate">77.00</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">57</td>
-                                    <td class="merit-name">Misbah Ullah</td>
-                                    <td class="merit-score">87.67</td>
-                                    <td class="merit-aggregate">76.96</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">58</td>
-                                    <td class="merit-name">Jan Zada</td>
-                                    <td class="merit-score">86.27</td>
-                                    <td class="merit-aggregate">76.18</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">59</td>
-                                    <td class="merit-name">Habib Ullah</td>
-                                    <td class="merit-score">89.27</td>
-                                    <td class="merit-aggregate">74.97</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
+                            <tbody id="homepage-merit-body">
+                                <!-- Data will be populated by JavaScript -->
                             </tbody>
                         </table>
                         
@@ -3448,430 +3111,40 @@
                         <h3>HEC Unofficial Merit – Bajaur (Till Now)</h3>
                         <p><strong>(Proposed by stoic 😊)</strong></p>
                         
-                        <table class="merit-table">
+                        <!-- Search Container -->
+                        <div class="merit-search-container">
+                            <div class="search-row">
+                                <div class="search-input">
+                                    <input type="text" id="bajaur-name-search" placeholder="Search by name...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="bajaur-aggregate-search" placeholder="Search by HEC aggregate...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="bajaur-father-search" placeholder="Search by father name...">
+                                </div>
+                                <button class="btn btn-primary" id="bajaur-clear-search">
+                                    <i class="fas fa-times"></i> Clear
+                                </button>
+                            </div>
+                            <div class="search-stats" id="bajaur-search-stats">
+                                Showing all students
+                            </div>
+                        </div>
+                        
+                        <table class="merit-table" id="bajaur-merit-table">
                             <thead>
                                 <tr>
                                     <th>Rank</th>
                                     <th>Name</th>
+                                    <th>Father Name</th>
                                     <th>MDCAT Score</th>
                                     <th>HEC Aggregate</th>
                                     <th>FATA Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="merit-rank">1</td>
-                                    <td class="merit-name">Murad Ali 👑🐐</td>
-                                    <td class="merit-score">93.71</td>
-                                    <td class="merit-aggregate">88.23</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">2</td>
-                                    <td class="merit-name">Arsalan Khan</td>
-                                    <td class="merit-score">94.25</td>
-                                    <td class="merit-aggregate">86.90</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">3</td>
-                                    <td class="merit-name">Hamayoun Khan</td>
-                                    <td class="merit-score">91.94</td>
-                                    <td class="merit-aggregate">86.00</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">4</td>
-                                    <td class="merit-name">Badshah Husain</td>
-                                    <td class="merit-score">92.934</td>
-                                    <td class="merit-aggregate">84.59</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">5</td>
-                                    <td class="merit-name">Muhammad Zeeshan</td>
-                                    <td class="merit-score">94.946</td>
-                                    <td class="merit-aggregate">84.28</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">6</td>
-                                    <td class="merit-name">Jawad Kamal</td>
-                                    <td class="merit-score">87.08</td>
-                                    <td class="merit-aggregate">84.03</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">7</td>
-                                    <td class="merit-name">Muhammad Khubaib</td>
-                                    <td class="merit-score">92.88</td>
-                                    <td class="merit-aggregate">84.00</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">8</td>
-                                    <td class="merit-name">Nizam Ullah</td>
-                                    <td class="merit-score">89.53</td>
-                                    <td class="merit-aggregate">83.23</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">9</td>
-                                    <td class="merit-name">Hamid Ullah</td>
-                                    <td class="merit-score">92.20</td>
-                                    <td class="merit-aggregate">82.80</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">10</td>
-                                    <td class="merit-name">Sohail Ahmad</td>
-                                    <td class="merit-score">92.69</td>
-                                    <td class="merit-aggregate">82.64</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">11</td>
-                                    <td class="merit-name">Farhan Ullah</td>
-                                    <td class="merit-score">89.42</td>
-                                    <td class="merit-aggregate">82.40</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">12</td>
-                                    <td class="merit-name">Hanif Ullah</td>
-                                    <td class="merit-score">93.77</td>
-                                    <td class="merit-aggregate">82.38</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">13</td>
-                                    <td class="merit-name">Wasid Iqbal</td>
-                                    <td class="merit-score">89.39</td>
-                                    <td class="merit-aggregate">82.34</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">14</td>
-                                    <td class="merit-name">Fazal Malik</td>
-                                    <td class="merit-score">91.83</td>
-                                    <td class="merit-aggregate">82.235</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">15</td>
-                                    <td class="merit-name">Amir Maawia</td>
-                                    <td class="merit-score">91.49</td>
-                                    <td class="merit-aggregate">82.102</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">16</td>
-                                    <td class="merit-name">Mian Sana Ullah</td>
-                                    <td class="merit-score">90.823</td>
-                                    <td class="merit-aggregate">82.09</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">17</td>
-                                    <td class="merit-name">Yahya Khan</td>
-                                    <td class="merit-score">92.18</td>
-                                    <td class="merit-aggregate">81.81</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">18</td>
-                                    <td class="merit-name">Sohail Ahmad (II)</td>
-                                    <td class="merit-score">89.78</td>
-                                    <td class="merit-aggregate">81.69</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">19</td>
-                                    <td class="merit-name">Subhanullah</td>
-                                    <td class="merit-score">89.99</td>
-                                    <td class="merit-aggregate">81.60</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">20</td>
-                                    <td class="merit-name">Muhammad Tariq</td>
-                                    <td class="merit-score">91.79</td>
-                                    <td class="merit-aggregate">81.39</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">21</td>
-                                    <td class="merit-name">Uzair Khan</td>
-                                    <td class="merit-score">92.54</td>
-                                    <td class="merit-aggregate">81.27</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">22</td>
-                                    <td class="merit-name">Imad Khan</td>
-                                    <td class="merit-score">92.66</td>
-                                    <td class="merit-aggregate">81.19</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">23</td>
-                                    <td class="merit-name">Fazil Rehman</td>
-                                    <td class="merit-score">90.33</td>
-                                    <td class="merit-aggregate">81.156</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">24</td>
-                                    <td class="merit-name">Nasar Khan</td>
-                                    <td class="merit-score">92.18</td>
-                                    <td class="merit-aggregate">81.08</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">25</td>
-                                    <td class="merit-name">Noor Ullah</td>
-                                    <td class="merit-score">92.60</td>
-                                    <td class="merit-aggregate">80.90</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">26</td>
-                                    <td class="merit-name">Junaid Ahmad</td>
-                                    <td class="merit-score">89.70</td>
-                                    <td class="merit-aggregate">80.85</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">27</td>
-                                    <td class="merit-name">Khalid Ahmad</td>
-                                    <td class="merit-score">92.05</td>
-                                    <td class="merit-aggregate">80.826</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">28</td>
-                                    <td class="merit-name">Ibad Ullah Khan</td>
-                                    <td class="merit-score">89.10</td>
-                                    <td class="merit-aggregate">80.80</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">29</td>
-                                    <td class="merit-name">Suliman Amir Khan</td>
-                                    <td class="merit-score">92.14</td>
-                                    <td class="merit-aggregate">80.78</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">30</td>
-                                    <td class="merit-name">Amir Saeed</td>
-                                    <td class="merit-score">83.30</td>
-                                    <td class="merit-aggregate">80.66</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">31</td>
-                                    <td class="merit-name">Muhammad Shakeel</td>
-                                    <td class="merit-score">90.72</td>
-                                    <td class="merit-aggregate">80.50</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">32</td>
-                                    <td class="merit-name">Najeeb Ali</td>
-                                    <td class="merit-score">88.88</td>
-                                    <td class="merit-aggregate">80.44</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">33</td>
-                                    <td class="merit-name">Muhammad Kamran</td>
-                                    <td class="merit-score">91.056</td>
-                                    <td class="merit-aggregate">80.265</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">34</td>
-                                    <td class="merit-name">Sami Ullah</td>
-                                    <td class="merit-score">90.713</td>
-                                    <td class="merit-aggregate">80.138</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">35</td>
-                                    <td class="merit-name">Nasirullah</td>
-                                    <td class="merit-score">90.43</td>
-                                    <td class="merit-aggregate">79.87</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">36</td>
-                                    <td class="merit-name">Abdullah Khan</td>
-                                    <td class="merit-score">92.098</td>
-                                    <td class="merit-aggregate">79.79</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">37</td>
-                                    <td class="merit-name">Haroon Rashid</td>
-                                    <td class="merit-score">88.60</td>
-                                    <td class="merit-aggregate">79.74</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">38</td>
-                                    <td class="merit-name">Rehan Ullah</td>
-                                    <td class="merit-score">90.70</td>
-                                    <td class="merit-aggregate">79.72</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">39</td>
-                                    <td class="merit-name">Farhad Ullah</td>
-                                    <td class="merit-score">90.50</td>
-                                    <td class="merit-aggregate">79.63</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">40</td>
-                                    <td class="merit-name">Murad Ali (II)</td>
-                                    <td class="merit-score">83.00</td>
-                                    <td class="merit-aggregate">79.50</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">41</td>
-                                    <td class="merit-name">Asad Ullah</td>
-                                    <td class="merit-score">90.69</td>
-                                    <td class="merit-aggregate">79.381</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">42</td>
-                                    <td class="merit-name">Farhan Khan</td>
-                                    <td class="merit-score">85.50</td>
-                                    <td class="merit-aggregate">79.25</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">43</td>
-                                    <td class="merit-name">Salam Alaikum</td>
-                                    <td class="merit-score">90.96</td>
-                                    <td class="merit-aggregate">79.18</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">44</td>
-                                    <td class="merit-name">Zubair Khan</td>
-                                    <td class="merit-score">90.80</td>
-                                    <td class="merit-aggregate">79.06</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">45</td>
-                                    <td class="merit-name">Abbas Khan</td>
-                                    <td class="merit-score">91.50</td>
-                                    <td class="merit-aggregate">78.65</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">46</td>
-                                    <td class="merit-name">M. Danyal</td>
-                                    <td class="merit-score">89.60</td>
-                                    <td class="merit-aggregate">78.60</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">47</td>
-                                    <td class="merit-name">Khobaib Khan</td>
-                                    <td class="merit-score">—</td>
-                                    <td class="merit-aggregate">78.56</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">48</td>
-                                    <td class="merit-name">Muhammad Wajid</td>
-                                    <td class="merit-score">90.671</td>
-                                    <td class="merit-aggregate">78.50</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">49</td>
-                                    <td class="merit-name">Jehanzeb</td>
-                                    <td class="merit-score">90.33</td>
-                                    <td class="merit-aggregate">78.49</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">50</td>
-                                    <td class="merit-name">Aziz Ul Haq</td>
-                                    <td class="merit-score">92.45</td>
-                                    <td class="merit-aggregate">78.25</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">51</td>
-                                    <td class="merit-name">Muhammad Idrees</td>
-                                    <td class="merit-score">91.333</td>
-                                    <td class="merit-aggregate">78.125</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">52</td>
-                                    <td class="merit-name">Adnan</td>
-                                    <td class="merit-score">89.60</td>
-                                    <td class="merit-aggregate">78.15</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">53</td>
-                                    <td class="merit-name">Adnan Ahmad</td>
-                                    <td class="merit-score">89.51</td>
-                                    <td class="merit-aggregate">77.45</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">54</td>
-                                    <td class="merit-name">Sajjad Ahmad</td>
-                                    <td class="merit-score">86.256</td>
-                                    <td class="merit-aggregate">77.16</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">55</td>
-                                    <td class="merit-name">Habib Ullah</td>
-                                    <td class="merit-score">86.56</td>
-                                    <td class="merit-aggregate">77.09</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">56</td>
-                                    <td class="merit-name">Abuzar Khan</td>
-                                    <td class="merit-score">90.29</td>
-                                    <td class="merit-aggregate">77.00</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">57</td>
-                                    <td class="merit-name">Misbah Ullah</td>
-                                    <td class="merit-score">87.67</td>
-                                    <td class="merit-aggregate">76.96</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">58</td>
-                                    <td class="merit-name">Jan Zada</td>
-                                    <td class="merit-score">86.27</td>
-                                    <td class="merit-aggregate">76.18</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
-                                <tr>
-                                    <td class="merit-rank">59</td>
-                                    <td class="merit-name">Habib Ullah</td>
-                                    <td class="merit-score">89.27</td>
-                                    <td class="merit-aggregate">74.97</td>
-                                    <td class="merit-status">FATA In</td>
-                                </tr>
+                            <tbody id="bajaur-merit-body">
+                                <!-- Data will be populated by JavaScript -->
                             </tbody>
                         </table>
                         
@@ -4681,6 +3954,93 @@
             { id: "WCW-LR-03", chapter: "Assumption Based, Conclusion Based, Argument Based, Premises Based", subject: "Logical Reasoning", url: "https://whitecoatwarrior.github.io/cautious-carnival/", questions: 50, time: 50, password: "WCW-EXT-000003" }
         ];
 
+        // Updated Bajaur Merit List Data (arranged in descending order of HEC Aggregate)
+        const meritListData = [
+            { name: "Murad Ali 👑🐐", fatherName: "", mdcat: "93.71", hec: "88.23", fata: "FATA In" },
+            { name: "Hamad Ahmad", fatherName: "", mdcat: "89.678", hec: "83.71", fata: "FATA In" },
+            { name: "Hamad Ahmad", fatherName: "", mdcat: "90.1", hec: "83.71", fata: "FATA In" },
+            { name: "Arsalan Khan", fatherName: "", mdcat: "94.25", hec: "86.90", fata: "FATA In" },
+            { name: "Arsalan Khan", fatherName: "", mdcat: "94.25", hec: "86.90", fata: "FATA In" },
+            { name: "Arsalan Khan", fatherName: "", mdcat: "94.2", hec: "86.99", fata: "FATA In" },
+            { name: "Hamayoun Khan", fatherName: "", mdcat: "91.94", hec: "86.00", fata: "FATA In" },
+            { name: "Badshah Husain", fatherName: "", mdcat: "92.934", hec: "84.59", fata: "FATA In" },
+            { name: "Muhammad Zeeshan", fatherName: "", mdcat: "94.946", hec: "84.28", fata: "FATA In" },
+            { name: "Jawad Kamal", fatherName: "", mdcat: "87.08", hec: "84.03", fata: "FATA In" },
+            { name: "Muhammad Khubaib", fatherName: "", mdcat: "92.88", hec: "84.00", fata: "FATA In" },
+            { name: "Nizam Ullah", fatherName: "", mdcat: "89.53", hec: "83.23", fata: "FATA In" },
+            { name: "Hamid Ullah", fatherName: "", mdcat: "92.20", hec: "82.80", fata: "FATA In" },
+            { name: "Sohail Ahmad", fatherName: "", mdcat: "92.69", hec: "82.64", fata: "FATA In" },
+            { name: "Farhan Ullah", fatherName: "", mdcat: "89.42", hec: "82.40", fata: "FATA In" },
+            { name: "Hanif Ullah", fatherName: "", mdcat: "93.77", hec: "82.38", fata: "FATA In" },
+            { name: "Wasid Iqbal", fatherName: "", mdcat: "89.39", hec: "82.34", fata: "FATA In" },
+            { name: "Fazal Malik", fatherName: "", mdcat: "91.83", hec: "82.235", fata: "FATA In" },
+            { name: "Amir Maawia", fatherName: "", mdcat: "91.49", hec: "82.102", fata: "FATA In" },
+            { name: "Mian Sana Ullah", fatherName: "", mdcat: "90.823", hec: "82.09", fata: "FATA In" },
+            { name: "Yahya Khan", fatherName: "", mdcat: "92.18", hec: "81.81", fata: "FATA In" },
+            { name: "Sohail Ahmad (II)", fatherName: "", mdcat: "89.78", hec: "81.69", fata: "FATA In" },
+            { name: "Subhanullah", fatherName: "", mdcat: "89.99", hec: "81.60", fata: "FATA In" },
+            { name: "Muhammad Tariq", fatherName: "", mdcat: "91.79", hec: "81.39", fata: "FATA In" },
+            { name: "Uzair Khan", fatherName: "", mdcat: "92.54", hec: "81.27", fata: "FATA In" },
+            { name: "Imad Khan", fatherName: "", mdcat: "92.66", hec: "81.19", fata: "FATA In" },
+            { name: "Fazil Rehman", fatherName: "", mdcat: "90.33", hec: "81.156", fata: "FATA In" },
+            { name: "Nasar Khan", fatherName: "", mdcat: "92.18", hec: "81.08", fata: "FATA In" },
+            { name: "Noor Ullah", fatherName: "", mdcat: "92.60", hec: "80.90", fata: "FATA In" },
+            { name: "Said Humayoon", fatherName: "", mdcat: "92.06", hec: "80.9", fata: "FATA In" },
+            { name: "Junaid Ahmad", fatherName: "", mdcat: "89.70", hec: "80.85", fata: "FATA In" },
+            { name: "Khalid Ahmad", fatherName: "", mdcat: "92.05", hec: "80.826", fata: "FATA In" },
+            { name: "Ibad Ullah Khan", fatherName: "", mdcat: "89.10", hec: "80.80", fata: "FATA In" },
+            { name: "Junaid Khan", fatherName: "", mdcat: "89.760", hec: "80.8", fata: "FATA In" },
+            { name: "Suliman Amir Khan", fatherName: "", mdcat: "92.14", hec: "80.78", fata: "FATA In" },
+            { name: "Muhammad Shakeel", fatherName: "", mdcat: "90.72", hec: "80.50", fata: "FATA In" },
+            { name: "Najeeb Ali", fatherName: "", mdcat: "88.88", hec: "80.44", fata: "FATA In" },
+            { name: "Muhammad Riaz", fatherName: "", mdcat: "94.95", hec: "80.45", fata: "FATA In" },
+            { name: "Muhammad Riaz", fatherName: "", mdcat: "94.95", hec: "80.45", fata: "FATA In" },
+            { name: "Rafi ullah", fatherName: "", mdcat: "88.988", hec: "80.2", fata: "FATA In" },
+            { name: "Muhammad Kamran", fatherName: "", mdcat: "91.056", hec: "80.265", fata: "FATA In" },
+            { name: "Sami Ullah", fatherName: "", mdcat: "90.713", hec: "80.138", fata: "FATA In" },
+            { name: "Shahid Ali", fatherName: "", mdcat: "92.43", hec: "80.13", fata: "FATA In" },
+            { name: "Nasirullah", fatherName: "", mdcat: "90.43", hec: "79.87", fata: "FATA In" },
+            { name: "Farman Ullah", fatherName: "", mdcat: "91.956", hec: "79.94", fata: "FATA In" },
+            { name: "Farman ullah", fatherName: "", mdcat: "91.956", hec: "79.94", fata: "FATA In" },
+            { name: "Abdullah Khan", fatherName: "", mdcat: "92.098", hec: "79.79", fata: "FATA In" },
+            { name: "Haroon Rashid", fatherName: "", mdcat: "88.60", hec: "79.74", fata: "FATA In" },
+            { name: "Rehan Ullah", fatherName: "", mdcat: "90.70", hec: "79.72", fata: "FATA In" },
+            { name: "Farhad Ullah", fatherName: "", mdcat: "90.50", hec: "79.63", fata: "FATA In" },
+            { name: "Osama Khan", fatherName: "", mdcat: "90.2", hec: "79.55", fata: "FATA In" },
+            { name: "Murad Ali (II)", fatherName: "", mdcat: "83.00", hec: "79.50", fata: "FATA In" },
+            { name: "Sara", fatherName: "", mdcat: "90.7", hec: "79.5", fata: "FATA In" },
+            { name: "IBRAR UL HAQ", fatherName: "", mdcat: "88.15", hec: "79.49", fata: "FATA In" },
+            { name: "Asad Ullah", fatherName: "", mdcat: "90.69", hec: "79.381", fata: "FATA In" },
+            { name: "Farhan Khan", fatherName: "", mdcat: "85.50", hec: "79.25", fata: "FATA In" },
+            { name: "Salam Alaikum", fatherName: "", mdcat: "90.96", hec: "79.18", fata: "FATA In" },
+            { name: "Sohail ahmad", fatherName: "", mdcat: "88.8", hec: "79.34", fata: "FATA In" },
+            { name: "Zubair Khan", fatherName: "", mdcat: "90.80", hec: "79.06", fata: "FATA In" },
+            { name: "Abbas Khan", fatherName: "", mdcat: "91.50", hec: "78.65", fata: "FATA In" },
+            { name: "M. Danyal", fatherName: "", mdcat: "89.60", hec: "78.60", fata: "FATA In" },
+            { name: "Khobaib Khan", fatherName: "", mdcat: "—", hec: "78.56", fata: "FATA In" },
+            { name: "Muhammad Wajid", fatherName: "", mdcat: "90.671", hec: "78.50", fata: "FATA In" },
+            { name: "Jehanzeb", fatherName: "", mdcat: "90.33", hec: "78.49", fata: "FATA In" },
+            { name: "Aziz Ul Haq", fatherName: "", mdcat: "92.45", hec: "78.25", fata: "FATA In" },
+            { name: "Muhammad Idrees", fatherName: "", mdcat: "91.333", hec: "78.125", fata: "FATA In" },
+            { name: "Adnan", fatherName: "", mdcat: "89.60", hec: "78.15", fata: "FATA In" },
+            { name: "Khan", fatherName: "said", mdcat: "84.666", hec: "78.109", fata: "FATA In" },
+            { name: "Zaid Ullah", fatherName: "", mdcat: "86.78", hec: "78", fata: "FATA In" },
+            { name: "Zaid Ullah", fatherName: "", mdcat: "86.78", hec: "78", fata: "FATA In" },
+            { name: "Adnan Ahmad", fatherName: "", mdcat: "89.51", hec: "77.45", fata: "FATA In" },
+            { name: "Sajjad Ahmad", fatherName: "", mdcat: "86.256", hec: "77.16", fata: "FATA In" },
+            { name: "Habib Ullah", fatherName: "", mdcat: "86.56", hec: "77.09", fata: "FATA In" },
+            { name: "Muhammad Uzair", fatherName: "", mdcat: "85.21", hec: "77.98", fata: "FATA In" },
+            { name: "Asad Ullah", fatherName: "", mdcat: "88", hec: "77.3", fata: "FATA In" },
+            { name: "Abuzar Khan", fatherName: "", mdcat: "90.29", hec: "77.6", fata: "FATA In" },
+            { name: "Misbah Ullah", fatherName: "", mdcat: "87.67", hec: "76.96", fata: "FATA In" },
+            { name: "Abusaeed", fatherName: "", mdcat: "89.53", hec: "76.35", fata: "FATA In" },
+            { name: "Jan Zada", fatherName: "", mdcat: "86.27", hec: "76.18", fata: "FATA In" },
+            { name: "Habib Ullah", fatherName: "", mdcat: "89.23", hec: "74.97", fata: "FATA In" },
+            { name: "Habib Ullah", fatherName: "", mdcat: "89.27", hec: "74.97", fata: "FATA In" },
+            { name: "Amir Saeed", fatherName: "", mdcat: "83.30", hec: "80.3", fata: "FATA In" },
+            { name: "Sayed Farhad Ali", fatherName: "", mdcat: "81.11", hec: "71.281", fata: "FATA In" }
+        ];
+
         // Categorize quizzes
         const chemistryQuizzes = quizzes.filter(quiz => quiz.subject === "Chemistry");
         const biologyQuizzes = quizzes.filter(quiz => quiz.subject === "Biology");
@@ -4723,6 +4083,12 @@
                 
                 // Setup registration form
                 setupRegistrationForm();
+                
+                // Load merit list data
+                loadMeritListData();
+                
+                // Setup merit list search
+                setupMeritListSearch();
             }
             
             function setupTabs() {
@@ -4740,6 +4106,11 @@
                         // Show active content
                         tabContents.forEach(content => content.classList.remove('active'));
                         document.getElementById(`${tabId}-tab`).classList.add('active');
+                        
+                        // If switching to merit list tabs, refresh search stats
+                        if (tabId === 'home' || tabId === 'bajaur') {
+                            updateSearchStats();
+                        }
                     });
                 });
             }
@@ -5119,6 +4490,226 @@
             if (darkMode) {
                 document.body.classList.add('dark-mode');
                 document.getElementById('theme-toggle').classList.add('dark');
+            }
+            
+            // Merit List Functions
+            function loadMeritListData() {
+                // Sort data by HEC in descending order
+                const sortedData = [...meritListData].sort((a, b) => {
+                    // Remove any non-numeric characters and convert to float for comparison
+                    const hecA = parseFloat(a.hec.toString().replace(/[^\d.]/g, '')) || 0;
+                    const hecB = parseFloat(b.hec.toString().replace(/[^\d.]/g, '')) || 0;
+                    return hecB - hecA;
+                });
+                
+                // Remove duplicates based on name and HEC
+                const uniqueData = removeDuplicates(sortedData);
+                
+                // Populate homepage table
+                const homepageBody = document.getElementById('homepage-merit-body');
+                homepageBody.innerHTML = '';
+                
+                uniqueData.forEach((student, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="merit-rank">${index + 1}</td>
+                        <td class="merit-name">${student.name}</td>
+                        <td class="merit-father">${student.fatherName || 'N/A'}</td>
+                        <td class="merit-score">${student.mdcat}</td>
+                        <td class="merit-aggregate">${student.hec}</td>
+                        <td class="merit-status">${student.fata}</td>
+                    `;
+                    homepageBody.appendChild(row);
+                });
+                
+                // Populate bajaur tab table
+                const bajaurBody = document.getElementById('bajaur-merit-body');
+                bajaurBody.innerHTML = '';
+                
+                uniqueData.forEach((student, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="merit-rank">${index + 1}</td>
+                        <td class="merit-name">${student.name}</td>
+                        <td class="merit-father">${student.fatherName || 'N/A'}</td>
+                        <td class="merit-score">${student.mdcat}</td>
+                        <td class="merit-aggregate">${student.hec}</td>
+                        <td class="merit-status">${student.fata}</td>
+                    `;
+                    bajaurBody.appendChild(row);
+                });
+                
+                // Store the data for search functionality
+                window.meritData = uniqueData;
+                updateSearchStats();
+            }
+            
+            function removeDuplicates(data) {
+                const seen = new Set();
+                const result = [];
+                
+                for (const student of data) {
+                    const key = `${student.name}-${student.hec}`;
+                    if (!seen.has(key)) {
+                        seen.add(key);
+                        result.push(student);
+                    }
+                }
+                
+                return result;
+            }
+            
+            function setupMeritListSearch() {
+                // Homepage search
+                const homepageNameSearch = document.getElementById('homepage-name-search');
+                const homepageAggregateSearch = document.getElementById('homepage-aggregate-search');
+                const homepageFatherSearch = document.getElementById('homepage-father-search');
+                const homepageClearSearch = document.getElementById('homepage-clear-search');
+                
+                // Bajaur tab search
+                const bajaurNameSearch = document.getElementById('bajaur-name-search');
+                const bajaurAggregateSearch = document.getElementById('bajaur-aggregate-search');
+                const bajaurFatherSearch = document.getElementById('bajaur-father-search');
+                const bajaurClearSearch = document.getElementById('bajaur-clear-search');
+                
+                // Add event listeners for homepage search
+                [homepageNameSearch, homepageAggregateSearch, homepageFatherSearch].forEach(input => {
+                    input.addEventListener('input', () => {
+                        filterMeritTable('homepage');
+                    });
+                });
+                
+                homepageClearSearch.addEventListener('click', () => {
+                    homepageNameSearch.value = '';
+                    homepageAggregateSearch.value = '';
+                    homepageFatherSearch.value = '';
+                    filterMeritTable('homepage');
+                });
+                
+                // Add event listeners for bajaur search
+                [bajaurNameSearch, bajaurAggregateSearch, bajaurFatherSearch].forEach(input => {
+                    input.addEventListener('input', () => {
+                        filterMeritTable('bajaur');
+                    });
+                });
+                
+                bajaurClearSearch.addEventListener('click', () => {
+                    bajaurNameSearch.value = '';
+                    bajaurAggregateSearch.value = '';
+                    bajaurFatherSearch.value = '';
+                    filterMeritTable('bajaur');
+                });
+            }
+            
+            function filterMeritTable(tableType) {
+                const tableId = tableType === 'homepage' ? 'homepage-merit-table' : 'bajaur-merit-table';
+                const nameSearch = tableType === 'homepage' ? 
+                    document.getElementById('homepage-name-search').value.toLowerCase() : 
+                    document.getElementById('bajaur-name-search').value.toLowerCase();
+                const aggregateSearch = tableType === 'homepage' ? 
+                    document.getElementById('homepage-aggregate-search').value.toLowerCase() : 
+                    document.getElementById('bajaur-aggregate-search').value.toLowerCase();
+                const fatherSearch = tableType === 'homepage' ? 
+                    document.getElementById('homepage-father-search').value.toLowerCase() : 
+                    document.getElementById('bajaur-father-search').value.toLowerCase();
+                
+                const table = document.getElementById(tableId);
+                const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+                
+                let visibleCount = 0;
+                
+                for (let i = 0; i < rows.length; i++) {
+                    const cells = rows[i].getElementsByTagName('td');
+                    const name = cells[1].textContent.toLowerCase();
+                    const father = cells[2].textContent.toLowerCase();
+                    const aggregate = cells[4].textContent.toLowerCase();
+                    
+                    const nameMatch = name.includes(nameSearch);
+                    const aggregateMatch = aggregate.includes(aggregateSearch);
+                    const fatherMatch = father.includes(fatherSearch);
+                    
+                    if (nameMatch && aggregateMatch && fatherMatch) {
+                        rows[i].style.display = '';
+                        visibleCount++;
+                    } else {
+                        rows[i].style.display = 'none';
+                    }
+                }
+                
+                // Update search stats
+                const statsElement = tableType === 'homepage' ? 
+                    document.getElementById('homepage-search-stats') : 
+                    document.getElementById('bajaur-search-stats');
+                
+                const totalCount = window.meritData.length;
+                statsElement.textContent = `Showing ${visibleCount} of ${totalCount} students`;
+                
+                // Highlight search terms
+                highlightSearchTerms(tableId, nameSearch, aggregateSearch, fatherSearch);
+            }
+            
+            function highlightSearchTerms(tableId, nameSearch, aggregateSearch, fatherSearch) {
+                const table = document.getElementById(tableId);
+                const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+                
+                for (let i = 0; i < rows.length; i++) {
+                    if (rows[i].style.display === 'none') continue;
+                    
+                    const cells = rows[i].getElementsByTagName('td');
+                    
+                    // Clear previous highlights
+                    cells[1].innerHTML = cells[1].textContent;
+                    cells[2].innerHTML = cells[2].textContent;
+                    cells[4].innerHTML = cells[4].textContent;
+                    
+                    // Highlight name
+                    if (nameSearch) {
+                        const nameText = cells[1].textContent;
+                        const highlightedName = nameText.replace(
+                            new RegExp(`(${escapeRegExp(nameSearch)})`, 'gi'),
+                            '<span style="background-color: #ffd700; padding: 1px 2px; border-radius: 2px;">$1</span>'
+                        );
+                        cells[1].innerHTML = highlightedName;
+                    }
+                    
+                    // Highlight father name
+                    if (fatherSearch) {
+                        const fatherText = cells[2].textContent;
+                        const highlightedFather = fatherText.replace(
+                            new RegExp(`(${escapeRegExp(fatherSearch)})`, 'gi'),
+                            '<span style="background-color: #90ee90; padding: 1px 2px; border-radius: 2px;">$1</span>'
+                        );
+                        cells[2].innerHTML = highlightedFather;
+                    }
+                    
+                    // Highlight aggregate
+                    if (aggregateSearch) {
+                        const aggregateText = cells[4].textContent;
+                        const highlightedAggregate = aggregateText.replace(
+                            new RegExp(`(${escapeRegExp(aggregateSearch)})`, 'gi'),
+                            '<span style="background-color: #ffb6c1; padding: 1px 2px; border-radius: 2px;">$1</span>'
+                        );
+                        cells[4].innerHTML = highlightedAggregate;
+                    }
+                }
+            }
+            
+            function escapeRegExp(string) {
+                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+            
+            function updateSearchStats() {
+                const homepageStats = document.getElementById('homepage-search-stats');
+                const bajaurStats = document.getElementById('bajaur-search-stats');
+                const totalCount = window.meritData ? window.meritData.length : 0;
+                
+                if (homepageStats) {
+                    homepageStats.textContent = `Showing ${totalCount} students`;
+                }
+                
+                if (bajaurStats) {
+                    bajaurStats.textContent = `Showing ${totalCount} students`;
+                }
             }
         });
     </script>
