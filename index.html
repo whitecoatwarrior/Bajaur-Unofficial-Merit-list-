@@ -6,8 +6,6 @@
     <title>MedPlex Academy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* [ALL CSS CODE REMAINS EXACTLY THE SAME] */
-        /* The entire CSS section from the original file remains unchanged */
         :root {
             --primary: #1a56db;
             --secondary: #0ea5e9;
@@ -1622,6 +1620,49 @@
             border-radius: var(--border-radius);
         }
 
+        /* Merit List Selector */
+        .merit-list-selector {
+            display: flex;
+            gap: 4.86px;
+            margin-bottom: 6.48px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 6.48px;
+            box-shadow: var(--shadow);
+        }
+
+        .merit-tab-btn {
+            flex: 1;
+            padding: 4.05px 6.48px;
+            border: none;
+            border-radius: var(--border-radius);
+            background: var(--light);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.486rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .merit-tab-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .merit-tab-btn:hover:not(.active) {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .merit-content {
+            display: none;
+        }
+
+        .merit-content.active {
+            display: block;
+        }
+
         /* Free Materials Section */
         .free-materials-section {
             background: linear-gradient(135deg, #f0fff4, #dcfce7);
@@ -1760,6 +1801,10 @@
             }
 
             .search-row {
+                flex-direction: column;
+            }
+
+            .merit-list-selector {
                 flex-direction: column;
             }
         }
@@ -1956,6 +2001,10 @@
                     <i class="fas fa-trophy"></i>
                     <span>Bajaur Unofficial Merit</span>
                 </button>
+                <button class="nav-btn" data-tab="khyber">
+                    <i class="fas fa-trophy"></i>
+                    <span>Khyber Unofficial Merit</span>
+                </button>
                 <button class="nav-btn" data-tab="all">
                     <i class="fas fa-globe"></i>
                     <span>All Quiz List</span>
@@ -2043,53 +2092,112 @@
                         </div>
                     </div>
                     
-                    <!-- Bajaur Merit List Section on Homepage -->
+                    <!-- Merit List Selection on Homepage -->
                     <div class="homepage-section">
-                        <h3><i class="fas fa-trophy"></i> HEC Unofficial Merit – Bajaur (Till Now)</h3>
-                        <p><strong>(Proposed by stoic 😊)</strong></p>
+                        <h3><i class="fas fa-trophy"></i> HEC Unofficial Merit Lists</h3>
+                        <p><strong>Select a district to view the unofficial merit list</strong></p>
                         
-                        <!-- Search Container -->
-                        <div class="merit-search-container">
-                            <div class="search-row">
-                                <div class="search-input">
-                                    <input type="text" id="homepage-name-search" placeholder="Search by name...">
-                                </div>
-                                <div class="search-input">
-                                    <input type="text" id="homepage-aggregate-search" placeholder="Search by HEC aggregate...">
-                                </div>
-                                <div class="search-input">
-                                    <input type="text" id="homepage-father-search" placeholder="Search by father name...">
-                                </div>
-                                <button class="btn btn-primary" id="homepage-clear-search">
-                                    <i class="fas fa-times"></i> Clear
-                                </button>
-                            </div>
-                            <div class="search-stats" id="homepage-search-stats">
-                                Showing all students
-                            </div>
+                        <div class="merit-list-selector">
+                            <button class="merit-tab-btn active" data-merit="bajaur">
+                                <i class="fas fa-map-marker-alt"></i> Bajaur Merit List
+                            </button>
+                            <button class="merit-tab-btn" data-merit="khyber">
+                                <i class="fas fa-map-marker-alt"></i> Khyber Merit List
+                            </button>
                         </div>
                         
-                        <table class="merit-table" id="homepage-merit-table">
-                            <thead>
-                                <tr>
-                                    <th>Rank</th>
-                                    <th>Name</th>
-                                    <th>Father Name</th>
-                                    <th>MDCAT Score</th>
-                                    <th>HEC Aggregate</th>
-                                    <th>FATA Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="homepage-merit-body">
-                                <!-- Data will be populated by JavaScript -->
-                            </tbody>
-                        </table>
+                        <!-- Bajaur Merit List on Homepage -->
+                        <div class="merit-content active" id="homepage-bajaur-merit">
+                            <h4>Bajaur Unofficial Merit List (Sorted by HEC Aggregate)</h4>
+                            <p><strong>(Proposed by stoic 😊)</strong></p>
+                            
+                            <!-- Search Container -->
+                            <div class="merit-search-container">
+                                <div class="search-row">
+                                    <div class="search-input">
+                                        <input type="text" id="homepage-bajaur-name-search" placeholder="Search by name...">
+                                    </div>
+                                    <div class="search-input">
+                                        <input type="text" id="homepage-bajaur-aggregate-search" placeholder="Search by HEC aggregate...">
+                                    </div>
+                                    <div class="search-input">
+                                        <input type="text" id="homepage-bajaur-father-search" placeholder="Search by father name...">
+                                    </div>
+                                    <button class="btn btn-primary" id="homepage-bajaur-clear-search">
+                                        <i class="fas fa-times"></i> Clear
+                                    </button>
+                                </div>
+                                <div class="search-stats" id="homepage-bajaur-search-stats">
+                                    Showing all students
+                                </div>
+                            </div>
+                            
+                            <table class="merit-table" id="homepage-bajaur-merit-table">
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Name</th>
+                                        <th>Father Name</th>
+                                        <th>MDCAT Score</th>
+                                        <th>HEC Aggregate</th>
+                                        <th>FATA Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="homepage-bajaur-merit-body">
+                                    <!-- Data will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Khyber Merit List on Homepage -->
+                        <div class="merit-content" id="homepage-khyber-merit">
+                            <h4>Khyber Unofficial Merit List</h4>
+                            <p><strong>HEC Khyber Unofficial Provisional Merit List (UpTo 52)</strong></p>
+                            
+                            <!-- Search Container -->
+                            <div class="merit-search-container">
+                                <div class="search-row">
+                                    <div class="search-input">
+                                        <input type="text" id="homepage-khyber-name-search" placeholder="Search by name...">
+                                    </div>
+                                    <div class="search-input">
+                                        <input type="text" id="homepage-khyber-aggregate-search" placeholder="Search by HEC aggregate...">
+                                    </div>
+                                    <div class="search-input">
+                                        <input type="text" id="homepage-khyber-father-search" placeholder="Search by father name...">
+                                    </div>
+                                    <button class="btn btn-primary" id="homepage-khyber-clear-search">
+                                        <i class="fas fa-times"></i> Clear
+                                    </button>
+                                </div>
+                                <div class="search-stats" id="homepage-khyber-search-stats">
+                                    Showing all students
+                                </div>
+                            </div>
+                            
+                            <table class="merit-table" id="homepage-khyber-merit-table">
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Name</th>
+                                        <th>Father Name</th>
+                                        <th>HEC Score</th>
+                                        <th>HEC Aggregate</th>
+                                        <th>FATA Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="homepage-khyber-merit-body">
+                                    <!-- Data will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
                         
                         <p style="margin-top: 6.48px; text-align: center; font-weight: 600; color: var(--primary);">
-                            <i class="fas fa-info-circle"></i> This is the unofficial merit list for Bajaur region. For official confirmation, please verify with HEC authorities.
+                            <i class="fas fa-info-circle"></i> These are unofficial merit lists. For official confirmation, please verify with HEC authorities.
                         </p>
                     </div>
                     
+                    <!-- Rest of the homepage content remains exactly the same -->
                     <!-- Free Study Materials Section -->
                     <div class="free-materials-section">
                         <h3>🎉 FREE STUDY MATERIALS & MOCK TESTS 🎉</h3>
@@ -3110,7 +3218,7 @@
                 
                 <div class="homepage-content">
                     <div class="homepage-section">
-                        <h3>HEC Unofficial Merit – Bajaur (Till Now)</h3>
+                        <h3>Bajaur Unofficial Merit List (Sorted by HEC Aggregate)</h3>
                         <p><strong>(Proposed by stoic 😊)</strong></p>
                         
                         <!-- Search Container -->
@@ -3174,6 +3282,94 @@
                     <div class="quiz-access-info">
                         <h3>Improve Your Ranking with MedPlex Academy</h3>
                         <p>Want to improve your MDCAT score and secure a better position in the merit list? Our comprehensive preparation program can help you achieve your goals:</p>
+                        
+                        <ul class="services-list">
+                            <li><i class="fas fa-check"></i> <strong>Structured Study Plans:</strong> Customized study schedules to maximize your preparation efficiency</li>
+                            <li><i class="fas fa-check"></i> <strong>Comprehensive Test Series:</strong> Regular assessments to track your progress and identify weak areas</li>
+                            <li><i class="fas fa-check"></i> <strong>Expert Guidance:</strong> One-on-one mentoring from experienced medical professionals</li>
+                            <li><i class="fas fa-check"></i> <strong>Updated Study Materials:</strong> Content aligned with the latest MDCAT syllabus and pattern</li>
+                            <li><i class="fas fa-check"></i> <strong>Performance Analytics:</strong> Detailed reports to monitor your improvement over time</li>
+                        </ul>
+                        
+                        <p><strong>Contact us today at 03299077817 to start your preparation journey and secure a better position in the next merit list!</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Khyber Merit List Tab -->
+        <div class="tab-content" id="khyber-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-trophy"></i> Khyber Unofficial Merit List</h3>
+                </div>
+                
+                <div class="homepage-content">
+                    <div class="homepage-section">
+                        <h3>HEC Khyber Unofficial Provisional Merit List (UpTo 52)</h3>
+                        <p><strong>By Vaseen Jamal & AJ SARWAR</strong></p>
+                        
+                        <!-- Search Container -->
+                        <div class="merit-search-container">
+                            <div class="search-row">
+                                <div class="search-input">
+                                    <input type="text" id="khyber-name-search" placeholder="Search by name...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="khyber-aggregate-search" placeholder="Search by HEC aggregate...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="khyber-father-search" placeholder="Search by father name...">
+                                </div>
+                                <button class="btn btn-primary" id="khyber-clear-search">
+                                    <i class="fas fa-times"></i> Clear
+                                </button>
+                            </div>
+                            <div class="search-stats" id="khyber-search-stats">
+                                Showing all students
+                            </div>
+                        </div>
+                        
+                        <table class="merit-table" id="khyber-merit-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Name</th>
+                                    <th>Father Name</th>
+                                    <th>HEC Score</th>
+                                    <th>HEC Aggregate</th>
+                                    <th>FATA Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="khyber-merit-body">
+                                <!-- Data will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                        
+                        <p style="margin-top: 6.48px; text-align: center; font-weight: 600; color: var(--primary);">
+                            <i class="fas fa-info-circle"></i> This is the unofficial merit list for Khyber region. For official confirmation, please verify with HEC authorities.
+                        </p>
+                    </div>
+                    
+                    <div class="homepage-section">
+                        <h3>About This Merit List</h3>
+                        <p>This merit list represents the current standing of Khyber region students based on their HEC scores and aggregates. The list is compiled from available data and is subject to change as more results are announced.</p>
+                        
+                        <p><strong>Important Notes:</strong></p>
+                        <ul class="services-list">
+                            <li><i class="fas fa-exclamation-triangle"></i> This is an <strong>unofficial</strong> merit list compiled from available sources</li>
+                            <li><i class="fas fa-exclamation-triangle"></i> Final merit positions will be determined by the official HEC authorities</li>
+                            <li><i class="fas fa-exclamation-triangle"></i> Students are advised to verify their rankings through official channels</li>
+                            <li><i class="fas fa-exclamation-triangle"></i> HEC scores and aggregates are as reported by students</li>
+                            <li><i class="fas fa-exclamation-triangle"></i> All students in this list have <strong>FATA In</strong> status</li>
+                        </ul>
+                        
+                        <p>For accurate and official merit positions, please contact the Higher Education Commission (HEC) Pakistan or your respective educational board.</p>
+                    </div>
+                    
+                    <div class="quiz-access-info">
+                        <h3>Improve Your Ranking with MedPlex Academy</h3>
+                        <p>Want to improve your HEC score and secure a better position in the merit list? Our comprehensive preparation program can help you achieve your goals:</p>
                         
                         <ul class="services-list">
                             <li><i class="fas fa-check"></i> <strong>Structured Study Plans:</strong> Customized study schedules to maximize your preparation efficiency</li>
@@ -3956,32 +4152,42 @@
             { id: "WCW-LR-03", chapter: "Assumption Based, Conclusion Based, Argument Based, Premises Based", subject: "Logical Reasoning", url: "https://whitecoatwarrior.github.io/cautious-carnival/", questions: 50, time: 50, password: "WCW-EXT-000003" }
         ];
 
-        // Updated Bajaur Merit List Data (arranged in descending order of HEC Aggregate)
-        // UPDATED VERSION: Removed rank 3, updated rank 15, removed rank 43, updated rank 37, and added new data
-        let meritListData = [
-            // Existing data with modifications
+        // UPDATED Bajaur Merit List Data (arranged in descending order of HEC Aggregate)
+        // INCLUDED ALL NEW DATA and REMOVED students 81, 3, and 68
+        // Sorted by HEC Aggregate in descending order
+        // All students have FATA In status
+        let bajaurMeritListData = [
+            // Top ranks from existing data
             { name: "Murad Ali 👑🐐", fatherName: "", mdcat: "93.71", hec: "88.23", fata: "FATA In" },
-            { name: "Hamad Ahmad", fatherName: "", mdcat: "89.678", hec: "83.71", fata: "FATA In" },
-            // RANK 3 REMOVED AS REQUESTED
-            { name: "Hamad Ahmad", fatherName: "", mdcat: "90.1", hec: "83.71", fata: "FATA In" },
+            
+            // New data with high HEC aggregates
+            { name: "Anas ahmad", fatherName: "", mdcat: "90.3", hec: "86.77", fata: "FATA In" },
             { name: "Arsalan Khan", fatherName: "", mdcat: "94.25", hec: "86.90", fata: "FATA In" },
-            { name: "Arsalan Khan", fatherName: "", mdcat: "94.25", hec: "86.90", fata: "FATA In" },
-            { name: "Arsalan Khan", fatherName: "", mdcat: "94.2", hec: "86.99", fata: "FATA In" },
             { name: "Hamayoun Khan", fatherName: "", mdcat: "91.94", hec: "86.00", fata: "FATA In" },
+            { name: "Najeeb ul hasan", fatherName: "", mdcat: "89.522", hec: "84.974", fata: "FATA In" },
             { name: "Badshah Husain", fatherName: "", mdcat: "92.934", hec: "84.59", fata: "FATA In" },
             { name: "Muhammad Zeeshan", fatherName: "", mdcat: "94.946", hec: "84.28", fata: "FATA In" },
-            { name: "Jawad Kamal", fatherName: "", mdcat: "87.08", hec: "84.03", fata: "FATA In" },
             { name: "Muhammad Khubaib", fatherName: "", mdcat: "92.88", hec: "84.00", fata: "FATA In" },
+            { name: "Hamad ahmad", fatherName: "", mdcat: "90.1", hec: "83.7", fata: "FATA In" },
+            { name: "Hamad Ahmad", fatherName: "", mdcat: "89.678", hec: "83.71", fata: "FATA In" },
             { name: "Nizam Ullah", fatherName: "", mdcat: "89.53", hec: "83.23", fata: "FATA In" },
             { name: "Hamid Ullah", fatherName: "", mdcat: "92.20", hec: "82.80", fata: "FATA In" },
+            { name: "Rehan anjum", fatherName: "", mdcat: "91.77", hec: "82.5", fata: "FATA In" },
+            { name: "Fazal malik", fatherName: "", mdcat: "92.4", hec: "82.235", fata: "FATA In" },
             { name: "Sohail Ahmad", fatherName: "", mdcat: "92.69", hec: "82.64", fata: "FATA In" },
             { name: "Farhan Ullah", fatherName: "", mdcat: "89.42", hec: "82.40", fata: "FATA In" },
-            // RANK 15 UPDATED: Wasid iqbal HEC (82.34) and Mdcat 91.04
             { name: "Wasid iqbal", fatherName: "", mdcat: "91.04", hec: "82.34", fata: "FATA In" },
             { name: "Hanif Ullah", fatherName: "", mdcat: "93.77", hec: "82.38", fata: "FATA In" },
             { name: "Fazal Malik", fatherName: "", mdcat: "91.83", hec: "82.235", fata: "FATA In" },
             { name: "Amir Maawia", fatherName: "", mdcat: "91.49", hec: "82.102", fata: "FATA In" },
             { name: "Mian Sana Ullah", fatherName: "", mdcat: "90.823", hec: "82.09", fata: "FATA In" },
+            
+            // New data from the provided list
+            { name: "shaukat ullah", fatherName: "", mdcat: "91.39", hec: "81.79", fata: "FATA In" },
+            { name: "Stoic", fatherName: "", mdcat: "89.90", hec: "81.43", fata: "FATA In" },
+            { name: "Amir Hamza", fatherName: "", mdcat: "90.95", hec: "81.4", fata: "FATA In" },
+            { name: "Waqas Ahmad", fatherName: "", mdcat: "89.24", hec: "81.45", fata: "FATA In" },
+            { name: "Muhammad Imran", fatherName: "", mdcat: "90.81", hec: "81.21", fata: "FATA In" },
             { name: "Yahya Khan", fatherName: "", mdcat: "92.18", hec: "81.81", fata: "FATA In" },
             { name: "Sohail Ahmad (II)", fatherName: "", mdcat: "89.78", hec: "81.69", fata: "FATA In" },
             { name: "Subhanullah", fatherName: "", mdcat: "89.99", hec: "81.60", fata: "FATA In" },
@@ -3990,6 +4196,7 @@
             { name: "Imad Khan", fatherName: "", mdcat: "92.66", hec: "81.19", fata: "FATA In" },
             { name: "Fazil Rehman", fatherName: "", mdcat: "90.33", hec: "81.156", fata: "FATA In" },
             { name: "Nasar Khan", fatherName: "", mdcat: "92.18", hec: "81.08", fata: "FATA In" },
+            { name: "Shahid ullah", fatherName: "Fazal Akbar", mdcat: "90.99", hec: "80.436", fata: "FATA In" },
             { name: "Noor Ullah", fatherName: "", mdcat: "92.60", hec: "80.90", fata: "FATA In" },
             { name: "Said Humayoon", fatherName: "", mdcat: "92.06", hec: "80.9", fata: "FATA In" },
             { name: "Junaid Ahmad", fatherName: "", mdcat: "89.70", hec: "80.85", fata: "FATA In" },
@@ -3997,119 +4204,128 @@
             { name: "Ibad Ullah Khan", fatherName: "", mdcat: "89.10", hec: "80.80", fata: "FATA In" },
             { name: "Junaid Khan", fatherName: "", mdcat: "89.760", hec: "80.8", fata: "FATA In" },
             { name: "Suliman Amir Khan", fatherName: "", mdcat: "92.14", hec: "80.78", fata: "FATA In" },
-            { name: "Muhammad Shakeel", fatherName: "", mdcat: "90.72", hec: "80.50", fata: "FATA In" },
-            { name: "Najeeb Ali", fatherName: "", mdcat: "88.88", hec: "80.44", fata: "FATA In" },
-            // RANK 37 UPDATED: amir saeed Hec aggregate 80.67 MDCat aggregate 89.30
             { name: "amir saeed", fatherName: "", mdcat: "89.30", hec: "80.67", fata: "FATA In" },
+            { name: "Muhammad Shakeel", fatherName: "", mdcat: "90.72", hec: "80.50", fata: "FATA In" },
             { name: "Muhammad Riaz", fatherName: "", mdcat: "94.95", hec: "80.45", fata: "FATA In" },
-            { name: "Muhammad Riaz", fatherName: "", mdcat: "94.95", hec: "80.45", fata: "FATA In" },
-            { name: "Rafi ullah", fatherName: "", mdcat: "88.988", hec: "80.2", fata: "FATA In" },
+            { name: "Najeeb Ali", fatherName: "", mdcat: "88.88", hec: "80.44", fata: "FATA In" },
             { name: "Muhammad Kamran", fatherName: "", mdcat: "91.056", hec: "80.265", fata: "FATA In" },
+            { name: "Rafi ullah", fatherName: "", mdcat: "88.988", hec: "80.2", fata: "FATA In" },
             { name: "Sami Ullah", fatherName: "", mdcat: "90.713", hec: "80.138", fata: "FATA In" },
             { name: "Shahid Ali", fatherName: "", mdcat: "92.43", hec: "80.13", fata: "FATA In" },
+            
+            // More students from existing and new data
+            { name: "Zia UL Islam", fatherName: "", mdcat: "93.21", hec: "79.821", fata: "FATA In" },
+            { name: "Hamid Khan", fatherName: "", mdcat: "90.4", hec: "79.8", fata: "FATA In" },
+            { name: "midrar khan", fatherName: "", mdcat: "87.83", hec: "79.33", fata: "FATA In" },
             { name: "Nasirullah", fatherName: "", mdcat: "90.43", hec: "79.87", fata: "FATA In" },
-            // RANK 43 REMOVED AS REQUESTED (because it is one students similar to 42)
             { name: "Farman ullah", fatherName: "", mdcat: "91.956", hec: "79.94", fata: "FATA In" },
             { name: "Abdullah Khan", fatherName: "", mdcat: "92.098", hec: "79.79", fata: "FATA In" },
+            { name: "zuhaib khan", fatherName: "", mdcat: "92.9015", hec: "79.1014", fata: "FATA In" },
             { name: "Haroon Rashid", fatherName: "", mdcat: "88.60", hec: "79.74", fata: "FATA In" },
             { name: "Rehan Ullah", fatherName: "", mdcat: "90.70", hec: "79.72", fata: "FATA In" },
             { name: "Farhad Ullah", fatherName: "", mdcat: "90.50", hec: "79.63", fata: "FATA In" },
             { name: "Osama Khan", fatherName: "", mdcat: "90.2", hec: "79.55", fata: "FATA In" },
-            { name: "Murad Ali (II)", fatherName: "", mdcat: "83.00", hec: "79.50", fata: "FATA In" },
             { name: "Sara", fatherName: "", mdcat: "90.7", hec: "79.5", fata: "FATA In" },
+            { name: "Murad Ali (II)", fatherName: "", mdcat: "83.00", hec: "79.50", fata: "FATA In" },
             { name: "IBRAR UL HAQ", fatherName: "", mdcat: "88.15", hec: "79.49", fata: "FATA In" },
             { name: "Asad Ullah", fatherName: "", mdcat: "90.69", hec: "79.381", fata: "FATA In" },
+            { name: "Sohail ahmad", fatherName: "", mdcat: "88.8", hec: "79.34", fata: "FATA In" },
             { name: "Farhan Khan", fatherName: "", mdcat: "85.50", hec: "79.25", fata: "FATA In" },
             { name: "Salam Alaikum", fatherName: "", mdcat: "90.96", hec: "79.18", fata: "FATA In" },
-            { name: "Sohail ahmad", fatherName: "", mdcat: "88.8", hec: "79.34", fata: "FATA In" },
             { name: "Zubair Khan", fatherName: "", mdcat: "90.80", hec: "79.06", fata: "FATA In" },
+            
+            // Lower HEC aggregates
+            { name: "Muhammad saqib", fatherName: "", mdcat: "88.97", hec: "78.71", fata: "FATA In" },
+            { name: "Syed kashif naeem", fatherName: "", mdcat: "82.04", hec: "78.57", fata: "FATA In" },
+            { name: "Shoaib ahmad", fatherName: "Shah Khan", mdcat: "88.79", hec: "78.0522", fata: "FATA In" },
+            { name: "Hazrat Bilal", fatherName: "", mdcat: "88.3", hec: "78.09", fata: "FATA In" },
+            { name: "Zaid Ullah", fatherName: "", mdcat: "86.78", hec: "78", fata: "FATA In" },
             { name: "Abbas Khan", fatherName: "", mdcat: "91.50", hec: "78.65", fata: "FATA In" },
             { name: "M. Danyal", fatherName: "", mdcat: "89.60", hec: "78.60", fata: "FATA In" },
-            { name: "Khobaib Khan", fatherName: "", mdcat: "—", hec: "78.56", fata: "FATA In" },
             { name: "Muhammad Wajid", fatherName: "", mdcat: "90.671", hec: "78.50", fata: "FATA In" },
             { name: "Jehanzeb", fatherName: "", mdcat: "90.33", hec: "78.49", fata: "FATA In" },
-            { name: "Aziz Ul Haq", fatherName: "", mdcat: "92.45", hec: "78.25", fata: "FATA In" },
             { name: "Muhammad Idrees", fatherName: "", mdcat: "91.333", hec: "78.125", fata: "FATA In" },
             { name: "Adnan", fatherName: "", mdcat: "89.60", hec: "78.15", fata: "FATA In" },
             { name: "Khan", fatherName: "said", mdcat: "84.666", hec: "78.109", fata: "FATA In" },
-            { name: "Zaid Ullah", fatherName: "", mdcat: "86.78", hec: "78", fata: "FATA In" },
-            { name: "Zaid Ullah", fatherName: "", mdcat: "86.78", hec: "78", fata: "FATA In" },
+            { name: "Aziz Ul Haq", fatherName: "", mdcat: "92.45", hec: "78.25", fata: "FATA In" },
             { name: "Adnan Ahmad", fatherName: "", mdcat: "89.51", hec: "77.45", fata: "FATA In" },
+            { name: "Muhammad Uzair", fatherName: "", mdcat: "85.21", hec: "77.98", fata: "FATA In" },
             { name: "Sajjad Ahmad", fatherName: "", mdcat: "86.256", hec: "77.16", fata: "FATA In" },
             { name: "Habib Ullah", fatherName: "", mdcat: "86.56", hec: "77.09", fata: "FATA In" },
-            { name: "Muhammad Uzair", fatherName: "", mdcat: "85.21", hec: "77.98", fata: "FATA In" },
-            { name: "Asad Ullah", fatherName: "", mdcat: "88", hec: "77.3", fata: "FATA In" },
+            { name: "Asad Ullah (2)", fatherName: "", mdcat: "88", hec: "77.3", fata: "FATA In" },
             { name: "Abuzar Khan", fatherName: "", mdcat: "90.29", hec: "77.6", fata: "FATA In" },
+            
+            // Lowest HEC aggregates
+            { name: "Abid ullah", fatherName: "", mdcat: "88.66", hec: "76.49", fata: "FATA In" },
             { name: "Misbah Ullah", fatherName: "", mdcat: "87.67", hec: "76.96", fata: "FATA In" },
             { name: "Abusaeed", fatherName: "", mdcat: "89.53", hec: "76.35", fata: "FATA In" },
             { name: "Jan Zada", fatherName: "", mdcat: "86.27", hec: "76.18", fata: "FATA In" },
-            { name: "Habib Ullah", fatherName: "", mdcat: "89.23", hec: "74.97", fata: "FATA In" },
-            { name: "Habib Ullah", fatherName: "", mdcat: "89.27", hec: "74.97", fata: "FATA In" },
-            { name: "Sayed Farhad Ali", fatherName: "", mdcat: "81.11", hec: "71.281", fata: "FATA In" }
-        ];
-
-        // NEW DATA TO BE ADDED
-        const newStudentsData = [
-            // 1. sajjad Ullah hec 81.29 mdcat 91.70
-            { name: "sajjad Ullah", fatherName: "", mdcat: "91.70", hec: "81.29", fata: "FATA In" },
-            
-            // 2. Muhammad saqib HEC 78.71 MDCAt 88.97
-            { name: "Muhammad saqib", fatherName: "", mdcat: "88.97", hec: "78.71", fata: "FATA In" },
-            
-            // 3. Muheeb Ullah HEC aggregate 81.227 MDCAT 90.22
-            { name: "Muheeb Ullah", fatherName: "", mdcat: "90.22", hec: "81.227", fata: "FATA In" },
-            
-            // 4. Name:Shahid ullah F/name :Fazal Akbar Hec marks: 70 Aggregate:80.436
-            { name: "Shahid ullah", fatherName: "Fazal Akbar", mdcat: "80.436", hec: "70", fata: "FATA In" },
-            
-            // 5. Waqas Ahmad Hec aggregate= 81.45 Mdcat = 89.24
-            { name: "Waqas Ahmad", fatherName: "", mdcat: "89.24", hec: "81.45", fata: "FATA In" },
-            
-            // 6. Muhammad saqib HEC 78.71 MDCAt 88.97 (duplicate of 2, but included as per request)
-            { name: "Muhammad saqib (2)", fatherName: "", mdcat: "88.97", hec: "78.71", fata: "FATA In" },
-            
-            // 7. shaukat ullah Mdcat 91.39 HEC 81.79
-            { name: "shaukat ullah", fatherName: "", mdcat: "91.39", hec: "81.79", fata: "FATA In" },
-            
-            // 8. Maaz ullah mdcat aggregates 85.5 hec is 74.4
-            { name: "Maaz ullah", fatherName: "", mdcat: "85.5", hec: "74.4", fata: "FATA In" },
-            
-            // 9. Name Zaid Ullah Mdcat 86.78 Hec 78 Fata in
-            { name: "Zaid Ullah (2)", fatherName: "", mdcat: "86.78", hec: "78", fata: "FATA In" },
-            
-            // 10. Name:Shahid ullah F/name :Fazal Akbar HEC Aggregate:80.436 MDCAT :- 90.99
-            { name: "Shahid ullah (2)", fatherName: "Fazal Akbar", mdcat: "90.99", hec: "80.436", fata: "FATA In" },
-            
-            // 11. Rehan anjum Mdcat:91.77 Hec:82.5
-            { name: "Rehan anjum", fatherName: "", mdcat: "91.77", hec: "82.5", fata: "FATA In" },
-            
-            // 12. Anas ahmad Mdcat 90.3 Hec 86.77
-            { name: "Anas ahmad", fatherName: "", mdcat: "90.3", hec: "86.77", fata: "FATA In" },
-            
-            // 13. Name Shoaib ahmad Father Shah Khan Mdcat aggregate 88.79 HEC aggregate 78.0522
-            { name: "Shoaib ahmad", fatherName: "Shah Khan", mdcat: "88.79", hec: "78.0522", fata: "FATA In" },
-            
-            // 14. Najeeb ul hasan NMDCAT 89.522 HEC 84.974
-            { name: "Najeeb ul hasan", fatherName: "", mdcat: "89.522", hec: "84.974", fata: "FATA In" },
-            
-            // 15. Muhammad Imran Mdcat 90.81 HEC 81.21
-            { name: "Muhammad Imran", fatherName: "", mdcat: "90.81", hec: "81.21", fata: "FATA In" },
-            
-            // 16. Ahmad Ali Mdcat 87.34 HEc: 74.9
             { name: "Ahmad Ali", fatherName: "", mdcat: "87.34", hec: "74.9", fata: "FATA In" },
+            { name: "Maaz ullah", fatherName: "", mdcat: "85.5", hec: "74.4", fata: "FATA In" },
+            { name: "Habib Ullah (2)", fatherName: "", mdcat: "89.23", hec: "74.97", fata: "FATA In" },
+            { name: "Habib Ullah (3)", fatherName: "", mdcat: "89.27", hec: "74.97", fata: "FATA In" },
+            { name: "Khobaib Khan", fatherName: "", mdcat: "—", hec: "78.56", fata: "FATA In" },
+            { name: "Sayed Farhad Ali", fatherName: "", mdcat: "81.11", hec: "71.281", fata: "FATA In" },
             
-            // 17. Mdcat.90 .4 HEC aggregate.79 Hamid Khan
-            { name: "Hamid Khan", fatherName: "", mdcat: "90.4", hec: "79", fata: "FATA In" },
-            
-            // 18. Name: Hazrat Bilal MDCAT score: 88.3 HEC aggregate: 78.09
-            { name: "Hazrat Bilal", fatherName: "", mdcat: "88.3", hec: "78.09", fata: "FATA In" },
-            
-            // 19. Name:midrar khan HEC 79.33 MDCAT 87.83
-            { name: "midrar khan", fatherName: "", mdcat: "87.83", hec: "79.33", fata: "FATA In" }
+            // Additional students from the original list (not in the new data)
+            { name: "Jawad Kamal", fatherName: "", mdcat: "87.08", hec: "84.03", fata: "FATA In" }
         ];
 
-        // Add new students to the merit list
-        meritListData = meritListData.concat(newStudentsData);
+        // Khyber Merit List Data (from the image)
+        const khyberMeritListData = [
+            { rank: 1, name: "Saqib", fatherName: "NM", hecScore: 72, hecAggregate: 82.0, status: "FATA In" },
+            { rank: 2, name: "Abdul Rehman", fatherName: "Delaware", hecScore: 71, hecAggregate: 81.15, status: "FATA In" },
+            { rank: 3, name: "M Ibrar", fatherName: "M Almar", hecScore: 69, hecAggregate: 80.6, status: "FATA In" },
+            { rank: 4, name: "Hamid Ullah", fatherName: "Noor Islam", hecScore: 71, hecAggregate: 80.56, status: "FATA In" },
+            { rank: 5, name: "Safi Ullah", fatherName: "Alamgir", hecScore: 68, hecAggregate: 80.486, status: "FATA In" },
+            { rank: 6, name: "Mudassir", fatherName: "NM", hecScore: 69, hecAggregate: 80.3, status: "FATA In" },
+            { rank: 7, name: "Hamid", fatherName: "Noor Islam", hecScore: "-", hecAggregate: 80.00, status: "FATA In" },
+            { rank: 8, name: "Ijaz Ahmad", fatherName: "Fayaz", hecScore: "NM", hecAggregate: 79.88, status: "FATA In" },
+            { rank: 9, name: "M Ubaid", fatherName: "M Saleh", hecScore: 70, hecAggregate: 79.80, status: "FATA In" },
+            { rank: 10, name: "M Zubair", fatherName: "Said Saleh", hecScore: 70, hecAggregate: 79.8, status: "FATA In" },
+            { rank: 11, name: "Murad Khan", fatherName: "Abdul qadir", hecScore: 67, hecAggregate: 79.61, status: "FATA In" },
+            { rank: 12, name: "Abdul Qadir", fatherName: "Bunor shah", hecScore: "NM", hecAggregate: 79.54, status: "FATA In" },
+            { rank: 13, name: "Abdul mateen", fatherName: "Lal Akbar", hecScore: 67, hecAggregate: 79.45, status: "FATA In" },
+            { rank: 14, name: "Mudassir", fatherName: "Sher Rahman", hecScore: 66, hecAggregate: 79.12, status: "FATA In" },
+            { rank: 15, name: "Muhammad Usman", fatherName: "Rat Mad", hecScore: 67, hecAggregate: 79.60, status: "FATA In" },
+            { rank: 16, name: "M Sajid", fatherName: "Waris Khan", hecScore: 65, hecAggregate: 78.186, status: "FATA In" },
+            { rank: 17, name: "Sameen", fatherName: "NM", hecScore: "NM", hecAggregate: 78.0, status: "FATA In" },
+            { rank: 18, name: "M Ishaq", fatherName: "Inayat Khan", hecScore: 66, hecAggregate: 78.0, status: "FATA In" },
+            { rank: 19, name: "AJ SARWAR", fatherName: "Binyameen", hecScore: 65, hecAggregate: 77.89, status: "FATA In" },
+            { rank: 20, name: "Tahir", fatherName: "NM", hecScore: "NM", hecAggregate: 77.78, status: "FATA In" },
+            { rank: 21, name: "Haji Akbar", fatherName: "NM", hecScore: "NM", hecAggregate: 77.75, status: "FATA In" },
+            { rank: 22, name: "M Tayyab", fatherName: "Gul Amin", hecScore: 62, hecAggregate: 76.98, status: "FATA In" },
+            { rank: 23, name: "Muhsin Khan", fatherName: "NM", hecScore: "NM", hecAggregate: 76.715, status: "FATA In" },
+            { rank: 24, name: "Mohsin", fatherName: "NM", hecScore: 63, hecAggregate: 76.71, status: "FATA In" },
+            { rank: 25, name: "Female", fatherName: "NM", hecScore: "NM", hecAggregate: 76.67, status: "FATA In" },
+            { rank: 26, name: "Salman Ahmed", fatherName: "Yur wali", hecScore: 63, hecAggregate: 76.64, status: "FATA In" },
+            { rank: 27, name: "M Ubaid", fatherName: "NM", hecScore: "NM", hecAggregate: 76.24, status: "FATA In" },
+            { rank: 28, name: "Suiyan Ali", fatherName: "N/M", hecScore: "N/M", hecAggregate: 76.1, status: "FATA In" },
+            { rank: 29, name: "Amanullah", fatherName: "Rahim Khan", hecScore: "NM", hecAggregate: 76.0, status: "FATA In" },
+            { rank: 30, name: "Kashif", fatherName: "NM", hecScore: "NM", hecAggregate: 75.98, status: "FATA In" },
+            { rank: 31, name: "M/Sadiq", fatherName: "Kalya Bagh", hecScore: 59, hecAggregate: 75.9, status: "FATA In" },
+            { rank: 32, name: "Adil Nawaz", fatherName: "-", hecScore: 61, hecAggregate: 75.77, status: "FATA In" },
+            { rank: 33, name: "Anas", fatherName: "Muhammad", hecScore: "NM", hecAggregate: 75.60, status: "FATA In" },
+            { rank: 34, name: "Zainab Afridi", fatherName: "M Khan", hecScore: "NM", hecAggregate: 75.6, status: "FATA In" },
+            { rank: 35, name: "Shahzalb", fatherName: "Gul amin", hecScore: 61, hecAggregate: 75.459, status: "FATA In" },
+            { rank: 36, name: "Zanlaan Khalil", fatherName: "Ferdoor Afridi", hecScore: 62, hecAggregate: 75.22, status: "FATA In" },
+            { rank: 37, name: "Ayoub", fatherName: "NM", hecScore: 62, hecAggregate: 75.0, status: "FATA In" },
+            { rank: 38, name: "Jazian Ahmad", fatherName: "Javed Khan", hecScore: 58, hecAggregate: 74.67, status: "FATA In" },
+            { rank: 39, name: "Amir Khan", fatherName: "NM", hecScore: 56, hecAggregate: 74.2, status: "FATA In" },
+            { rank: 40, name: "Saqib", fatherName: "Muhammad Zaman", hecScore: 61, hecAggregate: 74.0, status: "FATA In" },
+            { rank: 41, name: "Ismail Shah", fatherName: "Tahir Khan", hecScore: 59, hecAggregate: 73.75, status: "FATA In" },
+            { rank: 42, name: "Hasnain", fatherName: "Member Khan", hecScore: 59, hecAggregate: 72.47, status: "FATA In" },
+            { rank: 43, name: "M Haroon", fatherName: "NM", hecScore: "NM", hecAggregate: 72.45, status: "FATA In" },
+            { rank: 44, name: "Hassb", fatherName: "-", hecScore: "-", hecAggregate: 72.3, status: "FATA In" },
+            { rank: 45, name: "Sher Zameen", fatherName: "Sher Muhammad", hecScore: "NM", hecAggregate: 72.3, status: "FATA In" },
+            { rank: 46, name: "Iqbal Khan", fatherName: "Mormat Khan", hecScore: "NM", hecAggregate: 71.86, status: "FATA In" },
+            { rank: 47, name: "Muhammad Umair", fatherName: "NM", hecScore: "NM", hecAggregate: 71.77, status: "FATA In" },
+            { rank: 48, name: "M Ijaz", fatherName: "Israt Ullah", hecScore: "-", hecAggregate: 70.62, status: "FATA In" },
+            { rank: 49, name: "Abdul Wahab", fatherName: "Najeeb Ullah", hecScore: "NM", hecAggregate: 70.42, status: "FATA In" },
+            { rank: 50, name: "Muhammad Shahzeï", fatherName: "Ahmad Khan", hecScore: 52, hecAggregate: 70.34, status: "FATA In" },
+            { rank: 51, name: "Imtiaz Afridi", fatherName: "Javed Khan", hecScore: 51, hecAggregate: 69.1, status: "FATA In" },
+            { rank: 52, name: "Mohammad Afridi", fatherName: "-", hecScore: "-", hecAggregate: 67.12, status: "FATA In" }
+        ];
 
         // Function to sort merit list by HEC in descending order
         function sortMeritListByHEC(data) {
@@ -4121,8 +4337,27 @@
             });
         }
 
-        // Sort the merit list
-        meritListData = sortMeritListByHEC(meritListData);
+        // Sort the Bajaur merit list
+        bajaurMeritListData = sortMeritListByHEC([...bajaurMeritListData]);
+
+        // Remove duplicates (based on name and HEC aggregate)
+        function removeDuplicates(data) {
+            const seen = new Set();
+            const result = [];
+            
+            for (const student of data) {
+                const key = `${student.name}-${student.hec}`;
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    result.push(student);
+                }
+            }
+            
+            return result;
+        }
+
+        // Remove duplicates from Bajaur list
+        bajaurMeritListData = removeDuplicates(bajaurMeritListData);
 
         // Categorize quizzes
         const chemistryQuizzes = quizzes.filter(quiz => quiz.subject === "Chemistry");
@@ -4172,6 +4407,9 @@
                 
                 // Setup merit list search
                 setupMeritListSearch();
+                
+                // Setup homepage merit list selector
+                setupHomepageMeritSelector();
             }
             
             function setupTabs() {
@@ -4191,7 +4429,7 @@
                         document.getElementById(`${tabId}-tab`).classList.add('active');
                         
                         // If switching to merit list tabs, refresh search stats
-                        if (tabId === 'home' || tabId === 'bajaur') {
+                        if (tabId === 'home' || tabId === 'bajaur' || tabId === 'khyber') {
                             updateSearchStats();
                         }
                     });
@@ -4577,17 +4815,17 @@
             
             // Merit List Functions
             function loadMeritListData() {
-                // Sort data by HEC in descending order
-                const sortedData = sortMeritListByHEC([...meritListData]);
+                // Sort Bajaur data by HEC in descending order
+                const sortedBajaurData = sortMeritListByHEC([...bajaurMeritListData]);
                 
-                // Remove duplicates based on name and HEC
-                const uniqueData = removeDuplicates(sortedData);
+                // Remove duplicates from Bajaur list
+                const uniqueBajaurData = removeDuplicates(sortedBajaurData);
                 
-                // Populate homepage table
-                const homepageBody = document.getElementById('homepage-merit-body');
-                homepageBody.innerHTML = '';
+                // Populate homepage Bajaur table
+                const homepageBajaurBody = document.getElementById('homepage-bajaur-merit-body');
+                homepageBajaurBody.innerHTML = '';
                 
-                uniqueData.forEach((student, index) => {
+                uniqueBajaurData.forEach((student, index) => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td class="merit-rank">${index + 1}</td>
@@ -4597,14 +4835,31 @@
                         <td class="merit-aggregate">${student.hec}</td>
                         <td class="merit-status">${student.fata}</td>
                     `;
-                    homepageBody.appendChild(row);
+                    homepageBajaurBody.appendChild(row);
                 });
                 
-                // Populate bajaur tab table
+                // Populate homepage Khyber table
+                const homepageKhyberBody = document.getElementById('homepage-khyber-merit-body');
+                homepageKhyberBody.innerHTML = '';
+                
+                khyberMeritListData.forEach((student, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="merit-rank">${student.rank}</td>
+                        <td class="merit-name">${student.name}</td>
+                        <td class="merit-father">${student.fatherName || 'N/A'}</td>
+                        <td class="merit-score">${student.hecScore}</td>
+                        <td class="merit-aggregate">${student.hecAggregate}</td>
+                        <td class="merit-status">${student.status}</td>
+                    `;
+                    homepageKhyberBody.appendChild(row);
+                });
+                
+                // Populate Bajaur tab table
                 const bajaurBody = document.getElementById('bajaur-merit-body');
                 bajaurBody.innerHTML = '';
                 
-                uniqueData.forEach((student, index) => {
+                uniqueBajaurData.forEach((student, index) => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td class="merit-rank">${index + 1}</td>
@@ -4617,32 +4872,41 @@
                     bajaurBody.appendChild(row);
                 });
                 
+                // Populate Khyber tab table
+                const khyberBody = document.getElementById('khyber-merit-body');
+                khyberBody.innerHTML = '';
+                
+                khyberMeritListData.forEach((student, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="merit-rank">${student.rank}</td>
+                        <td class="merit-name">${student.name}</td>
+                        <td class="merit-father">${student.fatherName || 'N/A'}</td>
+                        <td class="merit-score">${student.hecScore}</td>
+                        <td class="merit-aggregate">${student.hecAggregate}</td>
+                        <td class="merit-status">${student.status}</td>
+                    `;
+                    khyberBody.appendChild(row);
+                });
+                
                 // Store the data for search functionality
-                window.meritData = uniqueData;
+                window.bajaurMeritData = uniqueBajaurData;
+                window.khyberMeritData = khyberMeritListData;
                 updateSearchStats();
             }
             
-            function removeDuplicates(data) {
-                const seen = new Set();
-                const result = [];
-                
-                for (const student of data) {
-                    const key = `${student.name}-${student.hec}`;
-                    if (!seen.has(key)) {
-                        seen.add(key);
-                        result.push(student);
-                    }
-                }
-                
-                return result;
-            }
-            
             function setupMeritListSearch() {
-                // Homepage search
-                const homepageNameSearch = document.getElementById('homepage-name-search');
-                const homepageAggregateSearch = document.getElementById('homepage-aggregate-search');
-                const homepageFatherSearch = document.getElementById('homepage-father-search');
-                const homepageClearSearch = document.getElementById('homepage-clear-search');
+                // Homepage Bajaur search
+                const homepageBajaurNameSearch = document.getElementById('homepage-bajaur-name-search');
+                const homepageBajaurAggregateSearch = document.getElementById('homepage-bajaur-aggregate-search');
+                const homepageBajaurFatherSearch = document.getElementById('homepage-bajaur-father-search');
+                const homepageBajaurClearSearch = document.getElementById('homepage-bajaur-clear-search');
+                
+                // Homepage Khyber search
+                const homepageKhyberNameSearch = document.getElementById('homepage-khyber-name-search');
+                const homepageKhyberAggregateSearch = document.getElementById('homepage-khyber-aggregate-search');
+                const homepageKhyberFatherSearch = document.getElementById('homepage-khyber-father-search');
+                const homepageKhyberClearSearch = document.getElementById('homepage-khyber-clear-search');
                 
                 // Bajaur tab search
                 const bajaurNameSearch = document.getElementById('bajaur-name-search');
@@ -4650,21 +4914,41 @@
                 const bajaurFatherSearch = document.getElementById('bajaur-father-search');
                 const bajaurClearSearch = document.getElementById('bajaur-clear-search');
                 
-                // Add event listeners for homepage search
-                [homepageNameSearch, homepageAggregateSearch, homepageFatherSearch].forEach(input => {
+                // Khyber tab search
+                const khyberNameSearch = document.getElementById('khyber-name-search');
+                const khyberAggregateSearch = document.getElementById('khyber-aggregate-search');
+                const khyberFatherSearch = document.getElementById('khyber-father-search');
+                const khyberClearSearch = document.getElementById('khyber-clear-search');
+                
+                // Add event listeners for homepage Bajaur search
+                [homepageBajaurNameSearch, homepageBajaurAggregateSearch, homepageBajaurFatherSearch].forEach(input => {
                     input.addEventListener('input', () => {
-                        filterMeritTable('homepage');
+                        filterMeritTable('homepage-bajaur');
                     });
                 });
                 
-                homepageClearSearch.addEventListener('click', () => {
-                    homepageNameSearch.value = '';
-                    homepageAggregateSearch.value = '';
-                    homepageFatherSearch.value = '';
-                    filterMeritTable('homepage');
+                homepageBajaurClearSearch.addEventListener('click', () => {
+                    homepageBajaurNameSearch.value = '';
+                    homepageBajaurAggregateSearch.value = '';
+                    homepageBajaurFatherSearch.value = '';
+                    filterMeritTable('homepage-bajaur');
                 });
                 
-                // Add event listeners for bajaur search
+                // Add event listeners for homepage Khyber search
+                [homepageKhyberNameSearch, homepageKhyberAggregateSearch, homepageKhyberFatherSearch].forEach(input => {
+                    input.addEventListener('input', () => {
+                        filterMeritTable('homepage-khyber');
+                    });
+                });
+                
+                homepageKhyberClearSearch.addEventListener('click', () => {
+                    homepageKhyberNameSearch.value = '';
+                    homepageKhyberAggregateSearch.value = '';
+                    homepageKhyberFatherSearch.value = '';
+                    filterMeritTable('homepage-khyber');
+                });
+                
+                // Add event listeners for Bajaur search
                 [bajaurNameSearch, bajaurAggregateSearch, bajaurFatherSearch].forEach(input => {
                     input.addEventListener('input', () => {
                         filterMeritTable('bajaur');
@@ -4677,22 +4961,63 @@
                     bajaurFatherSearch.value = '';
                     filterMeritTable('bajaur');
                 });
+                
+                // Add event listeners for Khyber search
+                [khyberNameSearch, khyberAggregateSearch, khyberFatherSearch].forEach(input => {
+                    input.addEventListener('input', () => {
+                        filterMeritTable('khyber');
+                    });
+                });
+                
+                khyberClearSearch.addEventListener('click', () => {
+                    khyberNameSearch.value = '';
+                    khyberAggregateSearch.value = '';
+                    khyberFatherSearch.value = '';
+                    filterMeritTable('khyber');
+                });
             }
             
-            function filterMeritTable(tableType) {
-                const tableId = tableType === 'homepage' ? 'homepage-merit-table' : 'bajaur-merit-table';
-                const nameSearch = tableType === 'homepage' ? 
-                    document.getElementById('homepage-name-search').value.toLowerCase() : 
-                    document.getElementById('bajaur-name-search').value.toLowerCase();
-                const aggregateSearch = tableType === 'homepage' ? 
-                    document.getElementById('homepage-aggregate-search').value.toLowerCase() : 
-                    document.getElementById('bajaur-aggregate-search').value.toLowerCase();
-                const fatherSearch = tableType === 'homepage' ? 
-                    document.getElementById('homepage-father-search').value.toLowerCase() : 
-                    document.getElementById('bajaur-father-search').value.toLowerCase();
+            function filterMeritTable(tableId) {
+                let tableElement, data, nameSearch, aggregateSearch, fatherSearch, statsElement;
                 
-                const table = document.getElementById(tableId);
-                const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+                switch(tableId) {
+                    case 'homepage-bajaur':
+                        tableElement = document.getElementById('homepage-bajaur-merit-table');
+                        data = window.bajaurMeritData || [];
+                        nameSearch = document.getElementById('homepage-bajaur-name-search').value.toLowerCase();
+                        aggregateSearch = document.getElementById('homepage-bajaur-aggregate-search').value.toLowerCase();
+                        fatherSearch = document.getElementById('homepage-bajaur-father-search').value.toLowerCase();
+                        statsElement = document.getElementById('homepage-bajaur-search-stats');
+                        break;
+                    case 'homepage-khyber':
+                        tableElement = document.getElementById('homepage-khyber-merit-table');
+                        data = window.khyberMeritData || [];
+                        nameSearch = document.getElementById('homepage-khyber-name-search').value.toLowerCase();
+                        aggregateSearch = document.getElementById('homepage-khyber-aggregate-search').value.toLowerCase();
+                        fatherSearch = document.getElementById('homepage-khyber-father-search').value.toLowerCase();
+                        statsElement = document.getElementById('homepage-khyber-search-stats');
+                        break;
+                    case 'bajaur':
+                        tableElement = document.getElementById('bajaur-merit-table');
+                        data = window.bajaurMeritData || [];
+                        nameSearch = document.getElementById('bajaur-name-search').value.toLowerCase();
+                        aggregateSearch = document.getElementById('bajaur-aggregate-search').value.toLowerCase();
+                        fatherSearch = document.getElementById('bajaur-father-search').value.toLowerCase();
+                        statsElement = document.getElementById('bajaur-search-stats');
+                        break;
+                    case 'khyber':
+                        tableElement = document.getElementById('khyber-merit-table');
+                        data = window.khyberMeritData || [];
+                        nameSearch = document.getElementById('khyber-name-search').value.toLowerCase();
+                        aggregateSearch = document.getElementById('khyber-aggregate-search').value.toLowerCase();
+                        fatherSearch = document.getElementById('khyber-father-search').value.toLowerCase();
+                        statsElement = document.getElementById('khyber-search-stats');
+                        break;
+                    default:
+                        return;
+                }
+                
+                const rows = tableElement.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
                 
                 let visibleCount = 0;
                 
@@ -4715,20 +5040,15 @@
                 }
                 
                 // Update search stats
-                const statsElement = tableType === 'homepage' ? 
-                    document.getElementById('homepage-search-stats') : 
-                    document.getElementById('bajaur-search-stats');
-                
-                const totalCount = window.meritData.length;
+                const totalCount = data.length;
                 statsElement.textContent = `Showing ${visibleCount} of ${totalCount} students`;
                 
                 // Highlight search terms
-                highlightSearchTerms(tableId, nameSearch, aggregateSearch, fatherSearch);
+                highlightSearchTerms(tableElement, nameSearch, aggregateSearch, fatherSearch);
             }
             
-            function highlightSearchTerms(tableId, nameSearch, aggregateSearch, fatherSearch) {
-                const table = document.getElementById(tableId);
-                const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+            function highlightSearchTerms(tableElement, nameSearch, aggregateSearch, fatherSearch) {
+                const rows = tableElement.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
                 
                 for (let i = 0; i < rows.length; i++) {
                     if (rows[i].style.display === 'none') continue;
@@ -4777,17 +5097,49 @@
             }
             
             function updateSearchStats() {
-                const homepageStats = document.getElementById('homepage-search-stats');
+                // Update homepage Bajaur stats
+                const homepageBajaurStats = document.getElementById('homepage-bajaur-search-stats');
+                const homepageKhyberStats = document.getElementById('homepage-khyber-search-stats');
                 const bajaurStats = document.getElementById('bajaur-search-stats');
-                const totalCount = window.meritData ? window.meritData.length : 0;
+                const khyberStats = document.getElementById('khyber-search-stats');
                 
-                if (homepageStats) {
-                    homepageStats.textContent = `Showing ${totalCount} students`;
+                const bajaurCount = window.bajaurMeritData ? window.bajaurMeritData.length : 0;
+                const khyberCount = window.khyberMeritData ? window.khyberMeritData.length : 0;
+                
+                if (homepageBajaurStats) {
+                    homepageBajaurStats.textContent = `Showing ${bajaurCount} students`;
+                }
+                
+                if (homepageKhyberStats) {
+                    homepageKhyberStats.textContent = `Showing ${khyberCount} students`;
                 }
                 
                 if (bajaurStats) {
-                    bajaurStats.textContent = `Showing ${totalCount} students`;
+                    bajaurStats.textContent = `Showing ${bajaurCount} students`;
                 }
+                
+                if (khyberStats) {
+                    khyberStats.textContent = `Showing ${khyberCount} students`;
+                }
+            }
+            
+            function setupHomepageMeritSelector() {
+                const meritTabBtns = document.querySelectorAll('.merit-tab-btn');
+                const meritContents = document.querySelectorAll('.merit-content');
+                
+                meritTabBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const meritType = btn.getAttribute('data-merit');
+                        
+                        // Update active button
+                        meritTabBtns.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        
+                        // Show active content
+                        meritContents.forEach(content => content.classList.remove('active'));
+                        document.getElementById(`homepage-${meritType}-merit`).classList.add('active');
+                    });
+                });
             }
         });
     </script>
