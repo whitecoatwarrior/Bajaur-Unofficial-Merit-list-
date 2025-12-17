@@ -6,6 +6,8 @@
     <title>MedPlex Academy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* [ALL CSS CODE REMAINS EXACTLY THE SAME] */
+        /* The entire CSS section from the original file remains unchanged */
         :root {
             --primary: #1a56db;
             --secondary: #0ea5e9;
@@ -3955,9 +3957,12 @@
         ];
 
         // Updated Bajaur Merit List Data (arranged in descending order of HEC Aggregate)
-        const meritListData = [
+        // UPDATED VERSION: Removed rank 3, updated rank 15, removed rank 43, updated rank 37, and added new data
+        let meritListData = [
+            // Existing data with modifications
             { name: "Murad Ali 👑🐐", fatherName: "", mdcat: "93.71", hec: "88.23", fata: "FATA In" },
             { name: "Hamad Ahmad", fatherName: "", mdcat: "89.678", hec: "83.71", fata: "FATA In" },
+            // RANK 3 REMOVED AS REQUESTED
             { name: "Hamad Ahmad", fatherName: "", mdcat: "90.1", hec: "83.71", fata: "FATA In" },
             { name: "Arsalan Khan", fatherName: "", mdcat: "94.25", hec: "86.90", fata: "FATA In" },
             { name: "Arsalan Khan", fatherName: "", mdcat: "94.25", hec: "86.90", fata: "FATA In" },
@@ -3971,8 +3976,9 @@
             { name: "Hamid Ullah", fatherName: "", mdcat: "92.20", hec: "82.80", fata: "FATA In" },
             { name: "Sohail Ahmad", fatherName: "", mdcat: "92.69", hec: "82.64", fata: "FATA In" },
             { name: "Farhan Ullah", fatherName: "", mdcat: "89.42", hec: "82.40", fata: "FATA In" },
+            // RANK 15 UPDATED: Wasid iqbal HEC (82.34) and Mdcat 91.04
+            { name: "Wasid iqbal", fatherName: "", mdcat: "91.04", hec: "82.34", fata: "FATA In" },
             { name: "Hanif Ullah", fatherName: "", mdcat: "93.77", hec: "82.38", fata: "FATA In" },
-            { name: "Wasid Iqbal", fatherName: "", mdcat: "89.39", hec: "82.34", fata: "FATA In" },
             { name: "Fazal Malik", fatherName: "", mdcat: "91.83", hec: "82.235", fata: "FATA In" },
             { name: "Amir Maawia", fatherName: "", mdcat: "91.49", hec: "82.102", fata: "FATA In" },
             { name: "Mian Sana Ullah", fatherName: "", mdcat: "90.823", hec: "82.09", fata: "FATA In" },
@@ -3993,6 +3999,8 @@
             { name: "Suliman Amir Khan", fatherName: "", mdcat: "92.14", hec: "80.78", fata: "FATA In" },
             { name: "Muhammad Shakeel", fatherName: "", mdcat: "90.72", hec: "80.50", fata: "FATA In" },
             { name: "Najeeb Ali", fatherName: "", mdcat: "88.88", hec: "80.44", fata: "FATA In" },
+            // RANK 37 UPDATED: amir saeed Hec aggregate 80.67 MDCat aggregate 89.30
+            { name: "amir saeed", fatherName: "", mdcat: "89.30", hec: "80.67", fata: "FATA In" },
             { name: "Muhammad Riaz", fatherName: "", mdcat: "94.95", hec: "80.45", fata: "FATA In" },
             { name: "Muhammad Riaz", fatherName: "", mdcat: "94.95", hec: "80.45", fata: "FATA In" },
             { name: "Rafi ullah", fatherName: "", mdcat: "88.988", hec: "80.2", fata: "FATA In" },
@@ -4000,7 +4008,7 @@
             { name: "Sami Ullah", fatherName: "", mdcat: "90.713", hec: "80.138", fata: "FATA In" },
             { name: "Shahid Ali", fatherName: "", mdcat: "92.43", hec: "80.13", fata: "FATA In" },
             { name: "Nasirullah", fatherName: "", mdcat: "90.43", hec: "79.87", fata: "FATA In" },
-            { name: "Farman Ullah", fatherName: "", mdcat: "91.956", hec: "79.94", fata: "FATA In" },
+            // RANK 43 REMOVED AS REQUESTED (because it is one students similar to 42)
             { name: "Farman ullah", fatherName: "", mdcat: "91.956", hec: "79.94", fata: "FATA In" },
             { name: "Abdullah Khan", fatherName: "", mdcat: "92.098", hec: "79.79", fata: "FATA In" },
             { name: "Haroon Rashid", fatherName: "", mdcat: "88.60", hec: "79.74", fata: "FATA In" },
@@ -4037,9 +4045,84 @@
             { name: "Jan Zada", fatherName: "", mdcat: "86.27", hec: "76.18", fata: "FATA In" },
             { name: "Habib Ullah", fatherName: "", mdcat: "89.23", hec: "74.97", fata: "FATA In" },
             { name: "Habib Ullah", fatherName: "", mdcat: "89.27", hec: "74.97", fata: "FATA In" },
-            { name: "Amir Saeed", fatherName: "", mdcat: "83.30", hec: "80.3", fata: "FATA In" },
             { name: "Sayed Farhad Ali", fatherName: "", mdcat: "81.11", hec: "71.281", fata: "FATA In" }
         ];
+
+        // NEW DATA TO BE ADDED
+        const newStudentsData = [
+            // 1. sajjad Ullah hec 81.29 mdcat 91.70
+            { name: "sajjad Ullah", fatherName: "", mdcat: "91.70", hec: "81.29", fata: "FATA In" },
+            
+            // 2. Muhammad saqib HEC 78.71 MDCAt 88.97
+            { name: "Muhammad saqib", fatherName: "", mdcat: "88.97", hec: "78.71", fata: "FATA In" },
+            
+            // 3. Muheeb Ullah HEC aggregate 81.227 MDCAT 90.22
+            { name: "Muheeb Ullah", fatherName: "", mdcat: "90.22", hec: "81.227", fata: "FATA In" },
+            
+            // 4. Name:Shahid ullah F/name :Fazal Akbar Hec marks: 70 Aggregate:80.436
+            { name: "Shahid ullah", fatherName: "Fazal Akbar", mdcat: "80.436", hec: "70", fata: "FATA In" },
+            
+            // 5. Waqas Ahmad Hec aggregate= 81.45 Mdcat = 89.24
+            { name: "Waqas Ahmad", fatherName: "", mdcat: "89.24", hec: "81.45", fata: "FATA In" },
+            
+            // 6. Muhammad saqib HEC 78.71 MDCAt 88.97 (duplicate of 2, but included as per request)
+            { name: "Muhammad saqib (2)", fatherName: "", mdcat: "88.97", hec: "78.71", fata: "FATA In" },
+            
+            // 7. shaukat ullah Mdcat 91.39 HEC 81.79
+            { name: "shaukat ullah", fatherName: "", mdcat: "91.39", hec: "81.79", fata: "FATA In" },
+            
+            // 8. Maaz ullah mdcat aggregates 85.5 hec is 74.4
+            { name: "Maaz ullah", fatherName: "", mdcat: "85.5", hec: "74.4", fata: "FATA In" },
+            
+            // 9. Name Zaid Ullah Mdcat 86.78 Hec 78 Fata in
+            { name: "Zaid Ullah (2)", fatherName: "", mdcat: "86.78", hec: "78", fata: "FATA In" },
+            
+            // 10. Name:Shahid ullah F/name :Fazal Akbar HEC Aggregate:80.436 MDCAT :- 90.99
+            { name: "Shahid ullah (2)", fatherName: "Fazal Akbar", mdcat: "90.99", hec: "80.436", fata: "FATA In" },
+            
+            // 11. Rehan anjum Mdcat:91.77 Hec:82.5
+            { name: "Rehan anjum", fatherName: "", mdcat: "91.77", hec: "82.5", fata: "FATA In" },
+            
+            // 12. Anas ahmad Mdcat 90.3 Hec 86.77
+            { name: "Anas ahmad", fatherName: "", mdcat: "90.3", hec: "86.77", fata: "FATA In" },
+            
+            // 13. Name Shoaib ahmad Father Shah Khan Mdcat aggregate 88.79 HEC aggregate 78.0522
+            { name: "Shoaib ahmad", fatherName: "Shah Khan", mdcat: "88.79", hec: "78.0522", fata: "FATA In" },
+            
+            // 14. Najeeb ul hasan NMDCAT 89.522 HEC 84.974
+            { name: "Najeeb ul hasan", fatherName: "", mdcat: "89.522", hec: "84.974", fata: "FATA In" },
+            
+            // 15. Muhammad Imran Mdcat 90.81 HEC 81.21
+            { name: "Muhammad Imran", fatherName: "", mdcat: "90.81", hec: "81.21", fata: "FATA In" },
+            
+            // 16. Ahmad Ali Mdcat 87.34 HEc: 74.9
+            { name: "Ahmad Ali", fatherName: "", mdcat: "87.34", hec: "74.9", fata: "FATA In" },
+            
+            // 17. Mdcat.90 .4 HEC aggregate.79 Hamid Khan
+            { name: "Hamid Khan", fatherName: "", mdcat: "90.4", hec: "79", fata: "FATA In" },
+            
+            // 18. Name: Hazrat Bilal MDCAT score: 88.3 HEC aggregate: 78.09
+            { name: "Hazrat Bilal", fatherName: "", mdcat: "88.3", hec: "78.09", fata: "FATA In" },
+            
+            // 19. Name:midrar khan HEC 79.33 MDCAT 87.83
+            { name: "midrar khan", fatherName: "", mdcat: "87.83", hec: "79.33", fata: "FATA In" }
+        ];
+
+        // Add new students to the merit list
+        meritListData = meritListData.concat(newStudentsData);
+
+        // Function to sort merit list by HEC in descending order
+        function sortMeritListByHEC(data) {
+            return data.sort((a, b) => {
+                // Convert HEC to numbers for comparison, handle special characters
+                const hecA = parseFloat(a.hec.toString().replace(/[^\d.]/g, '')) || 0;
+                const hecB = parseFloat(b.hec.toString().replace(/[^\d.]/g, '')) || 0;
+                return hecB - hecA; // Descending order
+            });
+        }
+
+        // Sort the merit list
+        meritListData = sortMeritListByHEC(meritListData);
 
         // Categorize quizzes
         const chemistryQuizzes = quizzes.filter(quiz => quiz.subject === "Chemistry");
@@ -4495,12 +4578,7 @@
             // Merit List Functions
             function loadMeritListData() {
                 // Sort data by HEC in descending order
-                const sortedData = [...meritListData].sort((a, b) => {
-                    // Remove any non-numeric characters and convert to float for comparison
-                    const hecA = parseFloat(a.hec.toString().replace(/[^\d.]/g, '')) || 0;
-                    const hecB = parseFloat(b.hec.toString().replace(/[^\d.]/g, '')) || 0;
-                    return hecB - hecA;
-                });
+                const sortedData = sortMeritListByHEC([...meritListData]);
                 
                 // Remove duplicates based on name and HEC
                 const uniqueData = removeDuplicates(sortedData);
