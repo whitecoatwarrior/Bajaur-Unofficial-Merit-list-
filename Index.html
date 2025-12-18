@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedPlex FATA Unofficial Merit List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --secondary: #0ea5e9;
+            --accent: #10b981;
+            --light: #f8fafc;
+            --dark: #1e3a8a;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --background: #f0f9ff;
+            --card-bg: #ffffff;
+            --text-primary: #1e3a8a;
+            --text-secondary: #4b5563;
+            --border-radius: 5px;
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.2s ease;
+            --compact-spacing: 3px;
+        }
+
+        .dark-mode {
+            --primary: #3b82f6;
+            --secondary: #0ea5e9;
+            --accent: #10b981;
+            --light: #1e293b;
+            --dark: #f1f5f9;
+            --background: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            position: relative;
+            font-size: 8.1px;
+            line-height: 1.1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4.86px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 6.48px;
+            border-radius: var(--border-radius);
+            margin-bottom: 6.48px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
+            animation: pulse 15s infinite linear;
+        }
+
+        @keyframes pulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 4.32px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo h1 {
+            font-size: 0.972rem;
+            font-weight: 800;
+            margin-bottom: 1.62px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo p {
+            font-weight: 500;
+            font-size: 0.486rem;
+            opacity: 0.9;
+        }
+
+        .header-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-content h1 {
+            font-size: 0.648rem;
+            margin-bottom: 4.32px;
+            color: #ffd700;
+        }
+
+        .header-content p {
+            font-size: 0.486rem;
+            line-height: 1.1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 15.12px;
+            height: 15.12px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            position: absolute;
+            top: 6.48px;
+            right: 6.48px;
+            z-index: 10;
+        }
+
+        .menu-toggle span {
+            width: 15.12px;
+            height: 1.62px;
+            background: white;
+            border-radius: 1.62px;
+            transition: var(--transition);
+            position: relative;
+            transform-origin: center;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(3.24px, 3.24px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4.32px, -4.32px);
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 6.48px;
+            position: relative;
+        }
+
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4.86px;
+        }
+
+        .nav-header h2 {
+            font-size: 0.729rem;
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: none;
+            width: 25.92px;
+            height: 12.96px;
+            border-radius: 12.96px;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 1.62px;
+            box-shadow: var(--shadow);
+        }
+
+        .theme-toggle span {
+            width: 9.72px;
+            height: 9.72px;
+            border-radius: 50%;
+            background: var(--primary);
+            position: absolute;
+            transition: var(--transition);
+            left: 1.62px;
+        }
+
+        .theme-toggle.dark span {
+            left: calc(100% - 11.34px);
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 2.43px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 2.43px;
+            padding: 4.05px 4.86px;
+            background: var(--card-bg);
+            border: none;
+            border-radius: var(--border-radius);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.486rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Panel Styles */
+        .panel {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 4.86px;
+            box-shadow: var(--shadow);
+            margin-bottom: 6.48px;
+            transition: var(--transition);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4.86px;
+            padding-bottom: 4.05px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .panel-title {
+            font-size: 0.648rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 2.43px;
+        }
+
+        .panel-actions {
+            display: flex;
+            gap: 2.43px;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.43px;
+            padding: 2.43px 4.86px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 0.486rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 9.72px 0;
+            margin-top: auto;
+            font-size: 0.486rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 6.48px;
+            margin-top: 6.48px;
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6.48px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Homepage Content Styles */
+        .homepage-content {
+            line-height: 1.4;
+        }
+
+        .homepage-section {
+            margin-bottom: 6.48px;
+        }
+
+        .homepage-section h3 {
+            font-size: 0.729rem;
+            color: var(--primary);
+            margin-bottom: 4.05px;
+        }
+
+        .homepage-section p {
+            font-size: 0.567rem;
+            margin-bottom: 4.05px;
+        }
+
+        /* Merit List Table Styles */
+        .merit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 4.86px 0;
+            font-size: 0.567rem;
+        }
+
+        .merit-table th, .merit-table td {
+            border: 1px solid #ddd;
+            padding: 4.05px;
+            text-align: left;
+        }
+
+        .merit-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+        }
+
+        .merit-table tr:nth-child(even) {
+            background: var(--light);
+        }
+
+        .merit-rank {
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            width: 25.92px;
+        }
+
+        .merit-name {
+            font-weight: 600;
+        }
+
+        .merit-father {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .merit-score {
+            font-weight: 600;
+            color: var(--success);
+            text-align: center;
+        }
+
+        .merit-aggregate {
+            font-weight: 600;
+            color: var(--warning);
+            text-align: center;
+        }
+
+        .merit-status {
+            font-weight: 600;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        /* Merit List Search Styles */
+        .merit-search-container {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 6.48px;
+            margin-bottom: 6.48px;
+            box-shadow: var(--shadow);
+        }
+
+        .search-row {
+            display: flex;
+            gap: 4.86px;
+            margin-bottom: 4.86px;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .search-input input {
+            width: 100%;
+            padding: 4.05px 4.86px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 0.486rem;
+        }
+
+        .search-stats {
+            font-size: 0.486rem;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 3.24px;
+            background: var(--light);
+            border-radius: var(--border-radius);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .main-nav {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: var(--card-bg);
+                border-radius: var(--border-radius);
+                box-shadow: var(--shadow);
+                padding: 4.86px;
+                z-index: 100;
+                width: 129.6px;
+                display: none;
+            }
+            
+            .main-nav.active {
+                display: flex;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .search-row {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 4.05px;
+            }
+            
+            header {
+                padding: 4.86px;
+            }
+            
+            .logo h1 {
+                font-size: 0.81rem;
+            }
+            
+            .panel {
+                padding: 4.86px;
+            }
+            
+            .merit-table {
+                font-size: 0.486rem;
+            }
+
+            .merit-table th, .merit-table td {
+                padding: 3.24px;
+            }
+
+            .merit-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 3.24px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 1.62px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="logo">
+                <h1>MedPlex FATA Unofficial Merit List</h1>
+                <p>Unofficial Merit Lists for FATA Region Students</p>
+            </div>
+            
+            <div class="header-content">
+                <h1>Sorted by HEC Aggregate in Descending Order</h1>
+                <p>Bajaur • KHYBER • South Waziristan Unofficial Merit Lists</p>
+            </div>
+        </header>
+
+        <div class="nav-container">
+            <div class="nav-header">
+                <h2>Navigation</h2>
+                <button class="theme-toggle" id="theme-toggle">
+                    <span></span>
+                </button>
+            </div>
+            
+            <div class="main-nav" id="main-nav">
+                <button class="nav-btn active" data-tab="bajaur">
+                    <i class="fas fa-trophy"></i>
+                    <span>Bajaur Merit List</span>
+                </button>
+                <button class="nav-btn" data-tab="khyber">
+                    <i class="fas fa-trophy"></i>
+                    <span>KHYBER Unofficial Merit</span>
+                </button>
+                <button class="nav-btn" data-tab="south-waziristan">
+                    <i class="fas fa-trophy"></i>
+                    <span>South Waziristan Merit List</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Bajaur Merit List Tab -->
+        <div class="tab-content active" id="bajaur-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-trophy"></i> Bajaur Unofficial Merit List</h3>
+                </div>
+                
+                <div class="homepage-content">
+                    <div class="homepage-section">
+                        <h3>Bajaur Unofficial Merit List (Sorted by HEC Aggregate in Descending Order)</h3>
+                        <p><strong>(Proposed by stoic 😊)</strong></p>
+                        
+                        <!-- Search Container -->
+                        <div class="merit-search-container">
+                            <div class="search-row">
+                                <div class="search-input">
+                                    <input type="text" id="bajaur-name-search" placeholder="Search by name...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="bajaur-aggregate-search" placeholder="Search by HEC aggregate...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="bajaur-father-search" placeholder="Search by father name...">
+                                </div>
+                                <button class="btn btn-primary" id="bajaur-clear-search">
+                                    <i class="fas fa-times"></i> Clear
+                                </button>
+                            </div>
+                            <div class="search-stats" id="bajaur-search-stats">
+                                Showing all students
+                            </div>
+                        </div>
+                        
+                        <table class="merit-table" id="bajaur-merit-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Name</th>
+                                    <th>Father Name</th>
+                                    <th>MDCAT Score</th>
+                                    <th>HEC Aggregate</th>
+                                    <th>FATA Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bajaur-merit-body">
+                                <!-- Data will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                        
+                        <p style="margin-top: 6.48px; text-align: center; font-weight: 600; color: var(--primary);">
+                            <i class="fas fa-info-circle"></i> This is an unofficial merit list for Bajaur region. For official confirmation, please verify with HEC authorities.
+                        </p>
+                    </div>
+                    
+                    <div class="homepage-section">
+                        <h3>About This Merit List</h3>
+                        <p>This merit list represents the current standing of Bajaur region students based on their MDCAT scores and HEC aggregates. The list is compiled from available data and is subject to change as more results are announced.</p>
+                        
+                        <p><strong>Important Notes:</strong></p>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="font-size: 0.567rem; margin-bottom: 2.43px; display: flex; align-items: center; gap: 4.05px;">
+                                <i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i>
+                                This is an <strong>unofficial</strong> merit list compiled from available sources
+                            </li>
+                            <li style="font-size: 0.567rem; margin-bottom: 2.43px; display: flex; align-items: center; gap: 4.05px;">
+                                <i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i>
+                                Final merit positions will be determined by the official HEC authorities
+                            </li>
+                            <li style="font-size: 0.567rem; margin-bottom: 2.43px; display: flex; align-items: center; gap: 4.05px;">
+                                <i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i>
+                                Students are advised to verify their rankings through official channels
+                            </li>
+                            <li style="font-size: 0.567rem; margin-bottom: 2.43px; display: flex; align-items: center; gap: 4.05px;">
+                                <i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i>
+                                MDCAT scores and aggregates are as reported by students
+                            </li>
+                            <li style="font-size: 0.567rem; margin-bottom: 2.43px; display: flex; align-items: center; gap: 4.05px;">
+                                <i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i>
+                                All students in this list have <strong>FATA In</strong> status
+                            </li>
+                        </ul>
+                        
+                        <p>For accurate and official merit positions, please contact the Higher Education Commission (HEC) Pakistan or your respective educational board.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KHYBER Merit List Tab -->
+        <div class="tab-content" id="khyber-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-trophy"></i> KHYBER Unofficial Merit List</h3>
+                </div>
+                
+                <div class="homepage-content">
+                    <div class="homepage-section">
+                        <h3>KHYBER Unofficial Merit List</h3>
+                        <p>This section will display the unofficial merit list for KHYBER region students.</p>
+                        
+                        <!-- Search Container -->
+                        <div class="merit-search-container">
+                            <div class="search-row">
+                                <div class="search-input">
+                                    <input type="text" id="khyber-name-search" placeholder="Search by name...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="khyber-aggregate-search" placeholder="Search by HEC aggregate...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="khyber-father-search" placeholder="Search by father name...">
+                                </div>
+                                <button class="btn btn-primary" id="khyber-clear-search">
+                                    <i class="fas fa-times"></i> Clear
+                                </button>
+                            </div>
+                            <div class="search-stats" id="khyber-search-stats">
+                                No data available yet
+                            </div>
+                        </div>
+                        
+                        <table class="merit-table" id="khyber-merit-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Name</th>
+                                    <th>Father Name</th>
+                                    <th>MDCAT Score</th>
+                                    <th>HEC Aggregate</th>
+                                    <th>FATA Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="6" style="text-align: center; padding: 19.44px; color: var(--text-secondary);">
+                                        <i class="fas fa-database" style="font-size: 1.62rem; margin-bottom: 6.48px; display: block;"></i>
+                                        Data for KHYBER region will be available soon
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <p style="margin-top: 6.48px; text-align: center; font-weight: 600; color: var(--primary);">
+                            <i class="fas fa-info-circle"></i> Merit list data for KHYBER region is being compiled and will be updated soon.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- South Waziristan Merit List Tab -->
+        <div class="tab-content" id="south-waziristan-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-trophy"></i> South Waziristan Merit List</h3>
+                </div>
+                
+                <div class="homepage-content">
+                    <div class="homepage-section">
+                        <h3>South Waziristan Unofficial Merit List</h3>
+                        <p>This section will display the unofficial merit list for South Waziristan region students.</p>
+                        
+                        <!-- Search Container -->
+                        <div class="merit-search-container">
+                            <div class="search-row">
+                                <div class="search-input">
+                                    <input type="text" id="south-waziristan-name-search" placeholder="Search by name...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="south-waziristan-aggregate-search" placeholder="Search by HEC aggregate...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="south-waziristan-father-search" placeholder="Search by father name...">
+                                </div>
+                                <button class="btn btn-primary" id="south-waziristan-clear-search">
+                                    <i class="fas fa-times"></i> Clear
+                                </button>
+                            </div>
+                            <div class="search-stats" id="south-waziristan-search-stats">
+                                No data available yet
+                            </div>
+                        </div>
+                        
+                        <table class="merit-table" id="south-waziristan-merit-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Name</th>
+                                    <th>Father Name</th>
+                                    <th>MDCAT Score</th>
+                                    <th>HEC Aggregate</th>
+                                    <th>FATA Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="6" style="text-align: center; padding: 19.44px; color: var(--text-secondary);">
+                                        <i class="fas fa-database" style="font-size: 1.62rem; margin-bottom: 6.48px; display: block;"></i>
+                                        Data for South Waziristan region will be available soon
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <p style="margin-top: 6.48px; text-align: center; font-weight: 600; color: var(--primary);">
+                            <i class="fas fa-info-circle"></i> Merit list data for South Waziristan region is being compiled and will be updated soon.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 MedPlex FATA Unofficial Merit List. All rights reserved.</p>
+                <p>Unofficial merit lists for FATA region students</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // UPDATED Bajaur Merit List Data with specified entries REMOVED and new data added
+        // Removed: Hamad Ahmad (HEC 83.71) and Habib Ullah (2) (HEC 74.97) - BUT Hamad Ahmad RE-ADDED as per instruction
+        let bajaurMeritListData = [
+            // New data with highest HEC aggregates
+            { name: "Abuzar Khan", fatherName: "Syed Ahmad Shah", mdcat: "71.16", hec: "90.44", fata: "FATA In" },
+            { name: "Murad Ali 👑🐐", fatherName: "", mdcat: "93.71", hec: "88.23", fata: "FATA In" },
+            
+            // New data with high HEC aggregates
+            { name: "Arsalan Khan", fatherName: "", mdcat: "94.25", hec: "86.90", fata: "FATA In" },
+            { name: "Anas ahmad", fatherName: "", mdcat: "90.3", hec: "86.77", fata: "FATA In" },
+            { name: "Hamayoun Khan", fatherName: "", mdcat: "91.94", hec: "86.00", fata: "FATA In" },
+            { name: "Jawad Kamal", fatherName: "", mdcat: "87.08", hec: "84.03", fata: "FATA In" },
+            { name: "Najeeb ul hasan", fatherName: "", mdcat: "89.522", hec: "84.974", fata: "FATA In" },
+            { name: "Badshah Husain", fatherName: "", mdcat: "92.934", hec: "84.59", fata: "FATA In" },
+            { name: "Muhammad Zeeshan", fatherName: "", mdcat: "94.946", hec: "84.28", fata: "FATA In" },
+            { name: "Muhammad Khubaib", fatherName: "", mdcat: "92.88", hec: "84.00", fata: "FATA In" },
+            
+            // Provided data - Hamad Ahmad RE-ADDED as per instruction
+            { name: "Hamad Ahmad", fatherName: "N/A", mdcat: "89.678", hec: "83.71", fata: "FATA In" },
+            { name: "Nizam Ullah", fatherName: "", mdcat: "89.53", hec: "83.23", fata: "FATA In" },
+            { name: "Hamid Ullah", fatherName: "", mdcat: "92.20", hec: "82.80", fata: "FATA In" },
+            
+            // Provided data
+            { name: "Rehan anjum", fatherName: "", mdcat: "91.77", hec: "82.5", fata: "FATA In" },
+            { name: "Fazal Malik", fatherName: "", mdcat: "91.83", hec: "82.235", fata: "FATA In" },
+            { name: "Sohail Ahmad", fatherName: "", mdcat: "92.69", hec: "82.64", fata: "FATA In" },
+            { name: "Farhan Ullah", fatherName: "", mdcat: "89.42", hec: "82.40", fata: "FATA In" },
+            { name: "Wasid iqbal", fatherName: "", mdcat: "91.04", hec: "82.34", fata: "FATA In" },
+            { name: "Hanif Ullah", fatherName: "", mdcat: "93.77", hec: "82.38", fata: "FATA In" },
+            { name: "Fazal Malik", fatherName: "", mdcat: "91.83", hec: "82.235", fata: "FATA In" },
+            { name: "Amir Maawia", fatherName: "", mdcat: "91.49", hec: "82.102", fata: "FATA In" },
+            { name: "Mian Sana Ullah", fatherName: "", mdcat: "90.823", hec: "82.09", fata: "FATA In" },
+            
+            // Provided data
+            { name: "shaukat ullah", fatherName: "", mdcat: "91.39", hec: "81.79", fata: "FATA In" },
+            { name: "Stoic", fatherName: "", mdcat: "89.90", hec: "81.43", fata: "FATA In" },
+            { name: "Amir Hamza", fatherName: "", mdcat: "90.95", hec: "81.4", fata: "FATA In" },
+            { name: "Waqas Ahmad", fatherName: "", mdcat: "89.24", hec: "81.45", fata: "FATA In" },
+            { name: "Muhammad Imran", fatherName: "", mdcat: "90.81", hec: "81.21", fata: "FATA In" },
+            { name: "Yahya Khan", fatherName: "", mdcat: "92.18", hec: "81.81", fata: "FATA In" },
+            { name: "Sohail Ahmad (II)", fatherName: "", mdcat: "89.78", hec: "81.69", fata: "FATA In" },
+            { name: "Subhanullah", fatherName: "", mdcat: "89.99", hec: "81.60", fata: "FATA In" },
+            { name: "Muhammad Tariq", fatherName: "", mdcat: "91.79", hec: "81.39", fata: "FATA In" },
+            { name: "Uzair Khan", fatherName: "", mdcat: "92.54", hec: "81.27", fata: "FATA In" },
+            { name: "Imad Khan", fatherName: "", mdcat: "92.66", hec: "81.19", fata: "FATA In" },
+            { name: "Fazil Rehman", fatherName: "", mdcat: "90.33", hec: "81.156", fata: "FATA In" },
+            { name: "Nasar Khan", fatherName: "", mdcat: "92.18", hec: "81.08", fata: "FATA In" },
+            
+            // Provided data
+            { name: "Shahid ullah", fatherName: "Fazal Akbar", mdcat: "90.99", hec: "80.436", fata: "FATA In" },
+            { name: "Noor Ullah", fatherName: "", mdcat: "92.60", hec: "80.90", fata: "FATA In" },
+            { name: "Said Humayoon", fatherName: "", mdcat: "92.06", hec: "80.9", fata: "FATA In" },
+            { name: "Junaid Ahmad", fatherName: "", mdcat: "89.70", hec: "80.85", fata: "FATA In" },
+            { name: "Khalid Ahmad", fatherName: "", mdcat: "92.05", hec: "80.826", fata: "FATA In" },
+            { name: "Ibad Ullah Khan", fatherName: "", mdcat: "89.10", hec: "80.80", fata: "FATA In" },
+            { name: "Junaid Khan", fatherName: "", mdcat: "89.760", hec: "80.8", fata: "FATA In" },
+            { name: "Suliman Amir Khan", fatherName: "", mdcat: "92.14", hec: "80.78", fata: "FATA In" },
+            { name: "amir saeed", fatherName: "", mdcat: "89.30", hec: "80.67", fata: "FATA In" },
+            { name: "Muhammad Shakeel", fatherName: "", mdcat: "90.72", hec: "80.50", fata: "FATA In" },
+            { name: "Muhammad Riaz", fatherName: "", mdcat: "94.95", hec: "80.45", fata: "FATA In" },
+            { name: "Najeeb Ali", fatherName: "", mdcat: "88.88", hec: "80.44", fata: "FATA In" },
+            { name: "Muhammad Kamran", fatherName: "", mdcat: "91.056", hec: "80.265", fata: "FATA In" },
+            { name: "Rafi ullah", fatherName: "", mdcat: "88.988", hec: "80.2", fata: "FATA In" },
+            { name: "Sami Ullah", fatherName: "", mdcat: "90.713", hec: "80.138", fata: "FATA In" },
+            { name: "Shahid Ali", fatherName: "", mdcat: "92.43", hec: "80.13", fata: "FATA In" },
+            
+            // Provided data
+            { name: "ikram ullah", fatherName: "", mdcat: "88.36", hec: "80.95", fata: "FATA In" },
+            { name: "Zia UL Islam", fatherName: "", mdcat: "93.21", hec: "79.821", fata: "FATA In" },
+            { name: "Hamid Khan", fatherName: "", mdcat: "90.4", hec: "79.8", fata: "FATA In" },
+            { name: "midrar khan", fatherName: "", mdcat: "87.83", hec: "79.33", fata: "FATA In" },
+            { name: "Nasirullah", fatherName: "", mdcat: "90.43", hec: "79.87", fata: "FATA In" },
+            { name: "Farman ullah", fatherName: "", mdcat: "91.956", hec: "79.94", fata: "FATA In" },
+            { name: "Abdullah Khan", fatherName: "", mdcat: "92.098", hec: "79.79", fata: "FATA In" },
+            
+            // Provided data
+            { name: "zuhaib khan", fatherName: "", mdcat: "92.9015", hec: "79.1014", fata: "FATA In" },
+            { name: "Haroon Rashid", fatherName: "", mdcat: "88.60", hec: "79.74", fata: "FATA In" },
+            { name: "Rehan Ullah", fatherName: "", mdcat: "90.70", hec: "79.72", fata: "FATA In" },
+            { name: "Farhad Ullah", fatherName: "", mdcat: "90.50", hec: "79.63", fata: "FATA In" },
+            { name: "Osama Khan", fatherName: "", mdcat: "90.2", hec: "79.55", fata: "FATA In" },
+            { name: "Sara", fatherName: "", mdcat: "90.7", hec: "79.5", fata: "FATA In" },
+            { name: "Murad Ali (II)", fatherName: "", mdcat: "83.00", hec: "79.50", fata: "FATA In" },
+            { name: "IBRAR UL HAQ", fatherName: "", mdcat: "88.15", hec: "79.49", fata: "FATA In" },
+            { name: "Asad Ullah", fatherName: "", mdcat: "90.69", hec: "79.381", fata: "FATA In" },
+            { name: "Sohail ahmad", fatherName: "", mdcat: "88.8", hec: "79.34", fata: "FATA In" },
+            { name: "Farhan Khan", fatherName: "", mdcat: "85.50", hec: "79.25", fata: "FATA In" },
+            { name: "Salam Alaikum", fatherName: "", mdcat: "90.96", hec: "79.18", fata: "FATA In" },
+            { name: "Zubair Khan", fatherName: "", mdcat: "90.80", hec: "79.06", fata: "FATA In" },
+            
+            // Provided data
+            { name: "Muhammad saqib", fatherName: "", mdcat: "88.97", hec: "78.71", fata: "FATA In" },
+            { name: "Syed kashif naeem", fatherName: "", mdcat: "82.04", hec: "78.57", fata: "FATA In" },
+            { name: "Shoaib ahmad", fatherName: "Shah Khan", mdcat: "88.79", hec: "78.0522", fata: "FATA In" },
+            { name: "Hazrat Bilal", fatherName: "", mdcat: "88.3", hec: "78.09", fata: "FATA In" },
+            { name: "Zaid Ullah", fatherName: "", mdcat: "86.78", hec: "78", fata: "FATA In" },
+            { name: "Abbas Khan", fatherName: "", mdcat: "91.50", hec: "78.65", fata: "FATA In" },
+            { name: "M. Danyal", fatherName: "", mdcat: "89.60", hec: "78.60", fata: "FATA In" },
+            { name: "Muhammad Wajid", fatherName: "", mdcat: "90.671", hec: "78.50", fata: "FATA In" },
+            { name: "Jehanzeb", fatherName: "", mdcat: "90.33", hec: "78.49", fata: "FATA In" },
+            { name: "Muhammad Idrees", fatherName: "", mdcat: "91.333", hec: "78.125", fata: "FATA In" },
+            { name: "Adnan", fatherName: "", mdcat: "89.60", hec: "78.15", fata: "FATA In" },
+            { name: "Khan", fatherName: "said", mdcat: "84.666", hec: "78.109", fata: "FATA In" },
+            { name: "Aziz Ul Haq", fatherName: "", mdcat: "92.45", hec: "78.25", fata: "FATA In" },
+            
+            // Provided data
+            { name: "Muhammad arafat", fatherName: "", mdcat: "92.89", hec: "79.28", fata: "FATA In" },
+            { name: "Huraira khan", fatherName: "", mdcat: "92.71", hec: "78.721", fata: "FATA In" },
+            { name: "Sundais kamal", fatherName: "", mdcat: "92.5", hec: "77.85", fata: "FATA In" },
+            { name: "Abuzar Khan", fatherName: "", mdcat: "79.55", hec: "78.984", fata: "FATA In" },
+            
+            { name: "Adnan Ahmad", fatherName: "", mdcat: "89.51", hec: "77.45", fata: "FATA In" },
+            { name: "Muhammad Uzair", fatherName: "", mdcat: "85.21", hec: "77.98", fata: "FATA In" },
+            { name: "Sajjad Ahmad", fatherName: "", mdcat: "86.256", hec: "77.16", fata: "FATA In" },
+            { name: "Habib Ullah", fatherName: "", mdcat: "86.56", hec: "77.09", fata: "FATA In" },
+            { name: "Asad Ullah (2)", fatherName: "", mdcat: "88", hec: "77.3", fata: "FATA In" },
+            { name: "Abuzar Khan", fatherName: "", mdcat: "90.29", hec: "77.6", fata: "FATA In" },
+            
+            // Provided data - Habib Ullah (2) REMOVED as per instructions
+            { name: "Abid ullah", fatherName: "", mdcat: "88.66", hec: "76.49", fata: "FATA In" },
+            { name: "Misbah Ullah", fatherName: "", mdcat: "87.67", hec: "76.96", fata: "FATA In" },
+            { name: "Abusaeed", fatherName: "", mdcat: "89.53", hec: "76.35", fata: "FATA In" },
+            { name: "Jan Zada", fatherName: "", mdcat: "86.27", hec: "76.18", fata: "FATA In" },
+            
+            // Provided data
+            { name: "Ahmad Ali", fatherName: "", mdcat: "87.34", hec: "74.9", fata: "FATA In" },
+            { name: "Maaz ullah", fatherName: "", mdcat: "85.5", hec: "74.4", fata: "FATA In" },
+            { name: "Habib Ullah (3)", fatherName: "", mdcat: "89.27", hec: "74.97", fata: "FATA In" },
+            { name: "Khobaib Khan", fatherName: "", mdcat: "—", hec: "78.56", fata: "FATA In" },
+            { name: "Sayed Farhad Ali", fatherName: "", mdcat: "81.11", hec: "71.281", fata: "FATA In" }
+        ];
+
+        // NEW DATA TO BE ADDED from instructions
+        const newData = [
+            { name: "Muhammad yaseen", fatherName: "Muhib gul", mdcat: "82.62", hec: "71.925", fata: "FATA In" },
+            { name: "Muhammad Abubakar", fatherName: "", mdcat: "90.96", hec: "79.18", fata: "FATA In" },
+            { name: "Sudais Ahmad khan", fatherName: "", mdcat: "91.47", hec: "77.91", fata: "FATA In" },
+            { name: "Abuzar Khan", fatherName: "Syed Ahmad shah", mdcat: "71.16", hec: "90.44", fata: "FATA In" },
+            { name: "Ramdad Ullah", fatherName: "", mdcat: "93.51", hec: "81.65", fata: "FATA In" },
+            { name: "Sajjad Ullah", fatherName: "", mdcat: "91.70", hec: "81.29", fata: "FATA In" },
+            { name: "Zia Ur Rahman", fatherName: "", mdcat: "90.000", hec: "77.125", fata: "FATA In" },
+            { name: "Yasir Hussain", fatherName: "", mdcat: "92.739", hec: "81.53", fata: "FATA In" },
+            { name: "Muhammad Shoaib khan", fatherName: "", mdcat: "92.61", hec: "80.2", fata: "FATA In" }
+        ];
+
+        // Function to normalize strings for duplicate checking
+        function normalizeString(str) {
+            return str.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+
+        // Function to check if a student already exists in the data
+        function isDuplicate(existingStudent, newStudent) {
+            const existingName = normalizeString(existingStudent.name);
+            const newName = normalizeString(newStudent.name);
+            
+            // First check by name and HEC (exact match)
+            const existingHEC = parseFloat(existingStudent.hec) || 0;
+            const newHEC = parseFloat(newStudent.hec) || 0;
+            
+            // If names are similar (accounting for case and spacing) and HEC is very close, consider it a duplicate
+            if (existingName === newName && Math.abs(existingHEC - newHEC) < 0.01) {
+                return true;
+            }
+            
+            // Also check by name and MDCAT
+            const existingMDCAT = parseFloat(existingStudent.mdcat) || 0;
+            const newMDCAT = parseFloat(newStudent.mdcat) || 0;
+            
+            if (existingName === newName && Math.abs(existingMDCAT - newMDCAT) < 0.01) {
+                return true;
+            }
+            
+            return false;
+        }
+
+        // Add new data while checking for duplicates
+        newData.forEach(newStudent => {
+            let isDuplicateFound = false;
+            
+            // Check against existing data
+            for (let i = 0; i < bajaurMeritListData.length; i++) {
+                if (isDuplicate(bajaurMeritListData[i], newStudent)) {
+                    isDuplicateFound = true;
+                    break;
+                }
+            }
+            
+            // If not a duplicate, add to the list
+            if (!isDuplicateFound) {
+                bajaurMeritListData.push(newStudent);
+            }
+        });
+
+        // Function to sort merit list by HEC in descending order
+        function sortMeritListByHEC(data) {
+            return data.sort((a, b) => {
+                // Convert HEC to numbers for comparison, handle special characters
+                const hecA = parseFloat(a.hec.toString().replace(/[^\d.]/g, '')) || 0;
+                const hecB = parseFloat(b.hec.toString().replace(/[^\d.]/g, '')) || 0;
+                return hecB - hecA; // Descending order
+            });
+        }
+
+        // Function to remove duplicates (based on name and HEC aggregate)
+        function removeDuplicates(data) {
+            const seen = new Set();
+            const result = [];
+            
+            for (const student of data) {
+                const key = `${normalizeString(student.name)}-${parseFloat(student.hec) || 0}`;
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    result.push(student);
+                }
+            }
+            
+            return result;
+        }
+
+        // Sort and remove duplicates
+        bajaurMeritListData = sortMeritListByHEC([...bajaurMeritListData]);
+        bajaurMeritListData = removeDuplicates(bajaurMeritListData);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the application
+            initApp();
+            
+            function initApp() {
+                // Set up tab navigation
+                setupTabs();
+                
+                // Set up event listeners
+                setupEventListeners();
+                
+                // Load merit list data
+                loadMeritListData();
+                
+                // Setup merit list search
+                setupMeritListSearch();
+                
+                // Apply animations
+                applyAnimations();
+            }
+            
+            function setupTabs() {
+                const tabButtons = document.querySelectorAll('.nav-btn[data-tab]');
+                const tabContents = document.querySelectorAll('.tab-content');
+                
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const tabId = button.getAttribute('data-tab');
+                        
+                        // Update active tab button
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        
+                        // Show active content
+                        tabContents.forEach(content => content.classList.remove('active'));
+                        document.getElementById(`${tabId}-tab`).classList.add('active');
+                    });
+                });
+            }
+            
+            function setupEventListeners() {
+                // Hamburger menu toggle
+                document.getElementById('menu-toggle').addEventListener('click', toggleMenu);
+                
+                // Theme toggle
+                document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+                
+                // Clear search buttons
+                document.getElementById('bajaur-clear-search').addEventListener('click', () => {
+                    document.getElementById('bajaur-name-search').value = '';
+                    document.getElementById('bajaur-aggregate-search').value = '';
+                    document.getElementById('bajaur-father-search').value = '';
+                    filterMeritTable('bajaur');
+                });
+                
+                document.getElementById('khyber-clear-search').addEventListener('click', () => {
+                    document.getElementById('khyber-name-search').value = '';
+                    document.getElementById('khyber-aggregate-search').value = '';
+                    document.getElementById('khyber-father-search').value = '';
+                    filterMeritTable('khyber');
+                });
+                
+                document.getElementById('south-waziristan-clear-search').addEventListener('click', () => {
+                    document.getElementById('south-waziristan-name-search').value = '';
+                    document.getElementById('south-waziristan-aggregate-search').value = '';
+                    document.getElementById('south-waziristan-father-search').value = '';
+                    filterMeritTable('south-waziristan');
+                });
+            }
+            
+            function toggleMenu() {
+                const menuToggle = document.getElementById('menu-toggle');
+                const mainNav = document.getElementById('main-nav');
+                
+                menuToggle.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            }
+            
+            function toggleTheme() {
+                const themeToggle = document.getElementById('theme-toggle');
+                document.body.classList.toggle('dark-mode');
+                themeToggle.classList.toggle('dark');
+                saveToLocalStorage('darkMode', document.body.classList.contains('dark-mode'));
+            }
+            
+            function loadMeritListData() {
+                // Sort Bajaur data by HEC in descending order
+                const sortedBajaurData = sortMeritListByHEC([...bajaurMeritListData]);
+                
+                // Remove duplicates from Bajaur list
+                const uniqueBajaurData = removeDuplicates(sortedBajaurData);
+                
+                // Populate Bajaur tab table
+                const bajaurBody = document.getElementById('bajaur-merit-body');
+                bajaurBody.innerHTML = '';
+                
+                uniqueBajaurData.forEach((student, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="merit-rank">${index + 1}</td>
+                        <td class="merit-name">${student.name}</td>
+                        <td class="merit-father">${student.fatherName || 'N/A'}</td>
+                        <td class="merit-score">${student.mdcat}</td>
+                        <td class="merit-aggregate">${student.hec}</td>
+                        <td class="merit-status">${student.fata}</td>
+                    `;
+                    bajaurBody.appendChild(row);
+                });
+                
+                // Store the data for search functionality
+                window.bajaurMeritData = uniqueBajaurData;
+                updateSearchStats();
+                
+                // Setup search input listeners for Bajaur
+                ['bajaur-name-search', 'bajaur-aggregate-search', 'bajaur-father-search'].forEach(id => {
+                    document.getElementById(id).addEventListener('input', () => {
+                        filterMeritTable('bajaur');
+                    });
+                });
+                
+                // Setup search input listeners for KHYBER (placeholder)
+                ['khyber-name-search', 'khyber-aggregate-search', 'khyber-father-search'].forEach(id => {
+                    document.getElementById(id).addEventListener('input', () => {
+                        filterMeritTable('khyber');
+                    });
+                });
+                
+                // Setup search input listeners for South Waziristan (placeholder)
+                ['south-waziristan-name-search', 'south-waziristan-aggregate-search', 'south-waziristan-father-search'].forEach(id => {
+                    document.getElementById(id).addEventListener('input', () => {
+                        filterMeritTable('south-waziristan');
+                    });
+                });
+            }
+            
+            function setupMeritListSearch() {
+                // Already set up in loadMeritListData()
+            }
+            
+            function filterMeritTable(tableId) {
+                let tableElement, data, nameSearch, aggregateSearch, fatherSearch, statsElement;
+                
+                switch(tableId) {
+                    case 'bajaur':
+                        tableElement = document.getElementById('bajaur-merit-table');
+                        data = window.bajaurMeritData || [];
+                        nameSearch = document.getElementById('bajaur-name-search').value.toLowerCase();
+                        aggregateSearch = document.getElementById('bajaur-aggregate-search').value.toLowerCase();
+                        fatherSearch = document.getElementById('bajaur-father-search').value.toLowerCase();
+                        statsElement = document.getElementById('bajaur-search-stats');
+                        break;
+                    case 'khyber':
+                        tableElement = document.getElementById('khyber-merit-table');
+                        data = []; // Empty for now
+                        nameSearch = document.getElementById('khyber-name-search').value.toLowerCase();
+                        aggregateSearch = document.getElementById('khyber-aggregate-search').value.toLowerCase();
+                        fatherSearch = document.getElementById('khyber-father-search').value.toLowerCase();
+                        statsElement = document.getElementById('khyber-search-stats');
+                        statsElement.textContent = 'No data available yet';
+                        return;
+                    case 'south-waziristan':
+                        tableElement = document.getElementById('south-waziristan-merit-table');
+                        data = []; // Empty for now
+                        nameSearch = document.getElementById('south-waziristan-name-search').value.toLowerCase();
+                        aggregateSearch = document.getElementById('south-waziristan-aggregate-search').value.toLowerCase();
+                        fatherSearch = document.getElementById('south-waziristan-father-search').value.toLowerCase();
+                        statsElement = document.getElementById('south-waziristan-search-stats');
+                        statsElement.textContent = 'No data available yet';
+                        return;
+                    default:
+                        return;
+                }
+                
+                const rows = tableElement.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+                
+                let visibleCount = 0;
+                
+                for (let i = 0; i < rows.length; i++) {
+                    const cells = rows[i].getElementsByTagName('td');
+                    const name = cells[1].textContent.toLowerCase();
+                    const father = cells[2].textContent.toLowerCase();
+                    const aggregate = cells[4].textContent.toLowerCase();
+                    
+                    const nameMatch = name.includes(nameSearch);
+                    const aggregateMatch = aggregate.includes(aggregateSearch);
+                    const fatherMatch = father.includes(fatherSearch);
+                    
+                    if (nameMatch && aggregateMatch && fatherMatch) {
+                        rows[i].style.display = '';
+                        visibleCount++;
+                    } else {
+                        rows[i].style.display = 'none';
+                    }
+                }
+                
+                // Update search stats
+                const totalCount = data.length;
+                statsElement.textContent = `Showing ${visibleCount} of ${totalCount} students`;
+                
+                // Highlight search terms
+                highlightSearchTerms(tableElement, nameSearch, aggregateSearch, fatherSearch);
+            }
+            
+            function highlightSearchTerms(tableElement, nameSearch, aggregateSearch, fatherSearch) {
+                const rows = tableElement.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+                
+                for (let i = 0; i < rows.length; i++) {
+                    if (rows[i].style.display === 'none') continue;
+                    
+                    const cells = rows[i].getElementsByTagName('td');
+                    
+                    // Clear previous highlights
+                    cells[1].innerHTML = cells[1].textContent;
+                    cells[2].innerHTML = cells[2].textContent;
+                    cells[4].innerHTML = cells[4].textContent;
+                    
+                    // Highlight name
+                    if (nameSearch) {
+                        const nameText = cells[1].textContent;
+                        const highlightedName = nameText.replace(
+                            new RegExp(`(${escapeRegExp(nameSearch)})`, 'gi'),
+                            '<span style="background-color: #ffd700; padding: 1px 2px; border-radius: 2px;">$1</span>'
+                        );
+                        cells[1].innerHTML = highlightedName;
+                    }
+                    
+                    // Highlight father name
+                    if (fatherSearch) {
+                        const fatherText = cells[2].textContent;
+                        const highlightedFather = fatherText.replace(
+                            new RegExp(`(${escapeRegExp(fatherSearch)})`, 'gi'),
+                            '<span style="background-color: #90ee90; padding: 1px 2px; border-radius: 2px;">$1</span>'
+                        );
+                        cells[2].innerHTML = highlightedFather;
+                    }
+                    
+                    // Highlight aggregate
+                    if (aggregateSearch) {
+                        const aggregateText = cells[4].textContent;
+                        const highlightedAggregate = aggregateText.replace(
+                            new RegExp(`(${escapeRegExp(aggregateSearch)})`, 'gi'),
+                            '<span style="background-color: #ffb6c1; padding: 1px 2px; border-radius: 2px;">$1</span>'
+                        );
+                        cells[4].innerHTML = highlightedAggregate;
+                    }
+                }
+            }
+            
+            function escapeRegExp(string) {
+                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+            
+            function updateSearchStats() {
+                // Update Bajaur stats
+                const bajaurStats = document.getElementById('bajaur-search-stats');
+                
+                const bajaurCount = window.bajaurMeritData ? window.bajaurMeritData.length : 0;
+                
+                if (bajaurStats) {
+                    bajaurStats.textContent = `Showing ${bajaurCount} students`;
+                }
+            }
+            
+            function applyAnimations() {
+                const elements = document.querySelectorAll('.panel, .nav-btn');
+                
+                elements.forEach((element, index) => {
+                    setTimeout(() => {
+                        element.classList.add('fade-in');
+                    }, index * 50);
+                });
+            }
+            
+            function saveToLocalStorage(key, value) {
+                try {
+                    localStorage.setItem(key, JSON.stringify(value));
+                } catch (e) {
+                    console.error('Error saving to localStorage:', e);
+                }
+            }
+            
+            function getFromLocalStorage(key) {
+                try {
+                    const value = localStorage.getItem(key);
+                    return value ? JSON.parse(value) : null;
+                } catch (e) {
+                    console.error('Error reading from localStorage:', e);
+                    return null;
+                }
+            }
+            
+            // Load dark mode setting
+            const darkMode = getFromLocalStorage('darkMode');
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-toggle').classList.add('dark');
+            }
+        });
+    </script>
+</body>
+</html>
