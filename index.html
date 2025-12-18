@@ -810,8 +810,8 @@
     </footer>
 
     <script>
-        // UPDATED Bajaur Merit List Data with specified entries REMOVED
-        // Removed: Hamad Ahmad (HEC 83.71) and Habib Ullah (2) (HEC 74.97)
+        // UPDATED Bajaur Merit List Data with specified entries REMOVED and new data added
+        // Removed: Hamad Ahmad (HEC 83.71) and Habib Ullah (2) (HEC 74.97) - BUT Hamad Ahmad RE-ADDED as per instruction
         let bajaurMeritListData = [
             // New data with highest HEC aggregates
             { name: "Abuzar Khan", fatherName: "Syed Ahmad Shah", mdcat: "71.16", hec: "90.44", fata: "FATA In" },
@@ -827,7 +827,8 @@
             { name: "Muhammad Zeeshan", fatherName: "", mdcat: "94.946", hec: "84.28", fata: "FATA In" },
             { name: "Muhammad Khubaib", fatherName: "", mdcat: "92.88", hec: "84.00", fata: "FATA In" },
             
-            // Provided data - Hamad Ahmad REMOVED as per instructions
+            // Provided data - Hamad Ahmad RE-ADDED as per instruction
+            { name: "Hamad Ahmad", fatherName: "N/A", mdcat: "89.678", hec: "83.71", fata: "FATA In" },
             { name: "Nizam Ullah", fatherName: "", mdcat: "89.53", hec: "83.23", fata: "FATA In" },
             { name: "Hamid Ullah", fatherName: "", mdcat: "92.20", hec: "82.80", fata: "FATA In" },
             
@@ -941,6 +942,67 @@
             { name: "Sayed Farhad Ali", fatherName: "", mdcat: "81.11", hec: "71.281", fata: "FATA In" }
         ];
 
+        // NEW DATA TO BE ADDED from instructions
+        const newData = [
+            { name: "Muhammad yaseen", fatherName: "Muhib gul", mdcat: "82.62", hec: "71.925", fata: "FATA In" },
+            { name: "Muhammad Abubakar", fatherName: "", mdcat: "90.96", hec: "79.18", fata: "FATA In" },
+            { name: "Sudais Ahmad khan", fatherName: "", mdcat: "91.47", hec: "77.91", fata: "FATA In" },
+            { name: "Abuzar Khan", fatherName: "Syed Ahmad shah", mdcat: "71.16", hec: "90.44", fata: "FATA In" },
+            { name: "Ramdad Ullah", fatherName: "", mdcat: "93.51", hec: "81.65", fata: "FATA In" },
+            { name: "Sajjad Ullah", fatherName: "", mdcat: "91.70", hec: "81.29", fata: "FATA In" },
+            { name: "Zia Ur Rahman", fatherName: "", mdcat: "90.000", hec: "77.125", fata: "FATA In" },
+            { name: "Yasir Hussain", fatherName: "", mdcat: "92.739", hec: "81.53", fata: "FATA In" },
+            { name: "Muhammad Shoaib khan", fatherName: "", mdcat: "92.61", hec: "80.2", fata: "FATA In" }
+        ];
+
+        // Function to normalize strings for duplicate checking
+        function normalizeString(str) {
+            return str.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+
+        // Function to check if a student already exists in the data
+        function isDuplicate(existingStudent, newStudent) {
+            const existingName = normalizeString(existingStudent.name);
+            const newName = normalizeString(newStudent.name);
+            
+            // First check by name and HEC (exact match)
+            const existingHEC = parseFloat(existingStudent.hec) || 0;
+            const newHEC = parseFloat(newStudent.hec) || 0;
+            
+            // If names are similar (accounting for case and spacing) and HEC is very close, consider it a duplicate
+            if (existingName === newName && Math.abs(existingHEC - newHEC) < 0.01) {
+                return true;
+            }
+            
+            // Also check by name and MDCAT
+            const existingMDCAT = parseFloat(existingStudent.mdcat) || 0;
+            const newMDCAT = parseFloat(newStudent.mdcat) || 0;
+            
+            if (existingName === newName && Math.abs(existingMDCAT - newMDCAT) < 0.01) {
+                return true;
+            }
+            
+            return false;
+        }
+
+        // Add new data while checking for duplicates
+        newData.forEach(newStudent => {
+            let isDuplicateFound = false;
+            
+            // Check against existing data
+            for (let i = 0; i < bajaurMeritListData.length; i++) {
+                if (isDuplicate(bajaurMeritListData[i], newStudent)) {
+                    isDuplicateFound = true;
+                    break;
+                }
+            }
+            
+            // If not a duplicate, add to the list
+            if (!isDuplicateFound) {
+                bajaurMeritListData.push(newStudent);
+            }
+        });
+
         // Function to sort merit list by HEC in descending order
         function sortMeritListByHEC(data) {
             return data.sort((a, b) => {
@@ -957,7 +1019,7 @@
             const result = [];
             
             for (const student of data) {
-                const key = `${student.name}-${student.hec}`;
+                const key = `${normalizeString(student.name)}-${parseFloat(student.hec) || 0}`;
                 if (!seen.has(key)) {
                     seen.add(key);
                     result.push(student);
