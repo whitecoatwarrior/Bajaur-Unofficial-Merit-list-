@@ -559,7 +559,7 @@
             
             <div class="header-content">
                 <h1>Sorted by HEC Aggregate in Descending Order</h1>
-                <p>Bajaur • KHYBER • South Waziristan Unofficial Merit Lists</p>
+                <p>Bajaur • KHYBER • South Waziristan (Upper & Lower) Unofficial Merit Lists</p>
             </div>
         </header>
 
@@ -580,9 +580,13 @@
                     <i class="fas fa-trophy"></i>
                     <span>KHYBER Unofficial Merit</span>
                 </button>
-                <button class="nav-btn" data-tab="south-waziristan">
+                <button class="nav-btn" data-tab="south-waziristan-upper">
                     <i class="fas fa-trophy"></i>
-                    <span>South Waziristan Merit List</span>
+                    <span>South Waziristan Upper</span>
+                </button>
+                <button class="nav-btn" data-tab="south-waziristan-lower">
+                    <i class="fas fa-trophy"></i>
+                    <span>South Waziristan Lower</span>
                 </button>
             </div>
         </div>
@@ -763,62 +767,136 @@
             </div>
         </div>
 
-        <!-- South Waziristan Merit List Tab -->
-        <div class="tab-content" id="south-waziristan-tab">
+        <!-- South Waziristan Upper Merit List Tab -->
+        <div class="tab-content" id="south-waziristan-upper-tab">
             <div class="panel fade-in">
                 <div class="panel-header">
-                    <h3 class="panel-title"><i class="fas fa-trophy"></i> South Waziristan Merit List</h3>
+                    <h3 class="panel-title"><i class="fas fa-trophy"></i> South Waziristan Upper Merit List</h3>
                 </div>
                 
                 <div class="homepage-content">
                     <div class="homepage-section">
-                        <h3>South Waziristan Unofficial Merit List</h3>
-                        <p>This section will display the unofficial merit list for South Waziristan region students.</p>
+                        <h3>South Waziristan Upper - Complete List</h3>
+                        <p><strong>Combined Data from Image and Provided List</strong></p>
                         
                         <!-- Search Container -->
                         <div class="merit-search-container">
                             <div class="search-row">
                                 <div class="search-input">
-                                    <input type="text" id="south-waziristan-name-search" placeholder="Search by name...">
+                                    <input type="text" id="sw-upper-name-search" placeholder="Search by name...">
                                 </div>
                                 <div class="search-input">
-                                    <input type="text" id="south-waziristan-aggregate-search" placeholder="Search by HEC aggregate...">
+                                    <input type="text" id="sw-upper-father-search" placeholder="Search by father name...">
                                 </div>
                                 <div class="search-input">
-                                    <input type="text" id="south-waziristan-father-search" placeholder="Search by father name...">
+                                    <input type="text" id="sw-upper-district-search" placeholder="Search by district...">
                                 </div>
-                                <button class="btn btn-primary" id="south-waziristan-clear-search">
+                                <button class="btn btn-primary" id="sw-upper-clear-search">
                                     <i class="fas fa-times"></i> Clear
                                 </button>
                             </div>
-                            <div class="search-stats" id="south-waziristan-search-stats">
-                                No data available yet
+                            <div class="search-stats" id="sw-upper-search-stats">
+                                Showing all students
                             </div>
                         </div>
                         
-                        <table class="merit-table" id="south-waziristan-merit-table">
+                        <table class="merit-table" id="sw-upper-merit-table">
                             <thead>
                                 <tr>
                                     <th>Rank</th>
                                     <th>Name</th>
                                     <th>Father Name</th>
-                                    <th>MDCAT Score</th>
+                                    <th>HEC Marks</th>
+                                    <th>HEC Aggregate</th>
+                                    <th>District</th>
+                                    <th>FATA Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sw-upper-merit-body">
+                                <!-- Data will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="homepage-section">
+                        <h3>South Waziristan Upper - HEC Merit List</h3>
+                        <p><strong>Sorted by HEC Aggregate in Descending Order</strong></p>
+                        
+                        <table class="merit-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Name</th>
+                                    <th>Father Name</th>
+                                    <th>HEC Marks</th>
                                     <th>HEC Aggregate</th>
                                     <th>FATA Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td colspan="6" style="text-align: center; padding: 19.44px; color: var(--text-secondary);">
-                                        <i class="fas fa-database" style="font-size: 1.62rem; margin-bottom: 6.48px; display: block;"></i>
-                                        Data for South Waziristan region will be available soon
-                                    </td>
-                                </tr>
+                            <tbody id="sw-upper-hec-body">
+                                <!-- HEC data will be populated by JavaScript -->
                             </tbody>
                         </table>
                         
                         <p style="margin-top: 6.48px; text-align: center; font-weight: 600; color: var(--primary);">
-                            <i class="fas fa-info-circle"></i> Merit list data for South Waziristan region is being compiled and will be updated soon.
+                            <i class="fas fa-info-circle"></i> This is an unofficial merit list for South Waziristan Upper region. For official confirmation, please verify with HEC authorities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- South Waziristan Lower Merit List Tab -->
+        <div class="tab-content" id="south-waziristan-lower-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-trophy"></i> South Waziristan Lower Merit List</h3>
+                </div>
+                
+                <div class="homepage-content">
+                    <div class="homepage-section">
+                        <h3>South Waziristan Lower - HEC Merit List</h3>
+                        <p><strong>Sorted by HEC Aggregate in Descending Order</strong></p>
+                        
+                        <!-- Search Container -->
+                        <div class="merit-search-container">
+                            <div class="search-row">
+                                <div class="search-input">
+                                    <input type="text" id="sw-lower-name-search" placeholder="Search by name...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="sw-lower-father-search" placeholder="Search by father name...">
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" id="sw-lower-aggregate-search" placeholder="Search by HEC aggregate...">
+                                </div>
+                                <button class="btn btn-primary" id="sw-lower-clear-search">
+                                    <i class="fas fa-times"></i> Clear
+                                </button>
+                            </div>
+                            <div class="search-stats" id="sw-lower-search-stats">
+                                Showing all students
+                            </div>
+                        </div>
+                        
+                        <table class="merit-table" id="sw-lower-merit-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Name</th>
+                                    <th>Father Name</th>
+                                    <th>HEC Marks</th>
+                                    <th>HEC Aggregate</th>
+                                    <th>FATA Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sw-lower-merit-body">
+                                <!-- Data will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                        
+                        <p style="margin-top: 6.48px; text-align: center; font-weight: 600; color: var(--primary);">
+                            <i class="fas fa-info-circle"></i> This is an unofficial merit list for South Waziristan Lower region. For official confirmation, please verify with HEC authorities.
                         </p>
                     </div>
                 </div>
@@ -837,14 +915,15 @@
 
     <script>
         // UPDATED Bajaur Merit List Data with specified entries REMOVED and new data added
-        // Removed: Hamad Ahmad (HEC 83.71) and Habib Ullah (2) (HEC 74.97) - BUT Hamad Ahmad RE-ADDED as per instruction
+        // Removed: Salam Alaikum as per instruction
+        // Added all requested data
         let bajaurMeritListData = [
-            // New data with highest HEC aggregates
+            // Highest HEC aggregates first
             { name: "Abuzar Khan", fatherName: "Syed Ahmad Shah", mdcat: "71.16", hec: "90.44", fata: "FATA In" },
             { name: "Muheeb Ullah", fatherName: "Abdul Ghafoor Khan", mdcat: "90.22", hec: "90.22", fata: "FATA In" },
             { name: "Murad Ali 👑🐐", fatherName: "", mdcat: "93.71", hec: "88.23", fata: "FATA In" },
             
-            // New data with high HEC aggregates
+            // New high HEC aggregates
             { name: "Arsalan Khan", fatherName: "", mdcat: "94.25", hec: "86.90", fata: "FATA In" },
             { name: "Anas ahmad", fatherName: "", mdcat: "90.3", hec: "86.77", fata: "FATA In" },
             { name: "Hamayoun Khan", fatherName: "", mdcat: "91.94", hec: "86.00", fata: "FATA In" },
@@ -854,7 +933,7 @@
             { name: "Muhammad Zeeshan", fatherName: "", mdcat: "94.946", hec: "84.28", fata: "FATA In" },
             { name: "Muhammad Khubaib", fatherName: "", mdcat: "92.88", hec: "84.00", fata: "FATA In" },
             
-            // Provided data - Hamad Ahmad RE-ADDED as per instruction
+            // Provided data
             { name: "Hamad Ahmad", fatherName: "N/A", mdcat: "89.678", hec: "83.71", fata: "FATA In" },
             { name: "Nizam Ullah", fatherName: "", mdcat: "89.53", hec: "83.23", fata: "FATA In" },
             { name: "Hamid Ullah", fatherName: "", mdcat: "92.20", hec: "82.80", fata: "FATA In" },
@@ -926,7 +1005,6 @@
             { name: "Asad Ullah", fatherName: "", mdcat: "90.69", hec: "79.381", fata: "FATA In" },
             { name: "Sohail ahmad", fatherName: "", mdcat: "88.8", hec: "79.34", fata: "FATA In" },
             { name: "Farhan Khan", fatherName: "", mdcat: "85.50", hec: "79.25", fata: "FATA In" },
-            { name: "Salam Alaikum", fatherName: "", mdcat: "90.96", hec: "79.18", fata: "FATA In" },
             { name: "Zubair Khan", fatherName: "", mdcat: "90.80", hec: "79.06", fata: "FATA In" },
             
             // Provided data
@@ -957,7 +1035,7 @@
             { name: "Asad Ullah (2)", fatherName: "", mdcat: "88", hec: "77.3", fata: "FATA In" },
             { name: "Abuzar Khan", fatherName: "", mdcat: "90.29", hec: "77.6", fata: "FATA In" },
             
-            // Provided data - Habib Ullah (2) REMOVED as per instructions
+            // Provided data
             { name: "Abid ullah", fatherName: "", mdcat: "88.66", hec: "76.49", fata: "FATA In" },
             { name: "Misbah Ullah", fatherName: "", mdcat: "87.67", hec: "76.96", fata: "FATA In" },
             { name: "Abusaeed", fatherName: "", mdcat: "89.53", hec: "76.35", fata: "FATA In" },
@@ -1082,6 +1160,69 @@
             { name: "M Haroon", fatherName: "Member Khan", testMarks: "NM", hec: "72.45", fata: "FATA In" }
         ];
 
+        // South Waziristan Upper Data from Image
+        let southWaziristanUpperImageData = [
+            { name: "Javeria", fatherName: "Yousaf Khan", fata: "FATA In", district: "South Waziristan Upper" },
+            { name: "Farman Ullah", fatherName: "Noor Kamal", fata: "FATA In", district: "South Waziristan (Upper)" },
+            { name: "Karim dad", fatherName: "Taj Alam", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "Safeer Ullah", fatherName: "Muhammad Qasim", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "Muhammad Saqib", fatherName: "Bismillah Khan", fata: "FATA Out", district: "D I KHAN" },
+            { name: "Asim Ahmad", fatherName: "Noor Zali", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "Ahmed", fatherName: "Shahid Khan", fata: "FATA In", district: "South waziristan upper" },
+            { name: "Arif", fatherName: "...", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "Rehan Ullah Khan", fatherName: "Muhammad Iqbal", fata: "FATA In", district: "South waziristan upper" },
+            { name: "Muhammad Asim Mehsood", fatherName: "Shahnawaz Khan", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "Nouman", fatherName: "Khan", fata: "FATA In", district: "Upper" },
+            { name: "Muhammad Adnan", fatherName: "Muhammad Iqbal", fata: "FATA In", district: "South wzt upper" },
+            { name: "Hina Hussain", fatherName: "Hikmat Hussain", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "Mohammad Asfand yar Burki", fatherName: "Ghulam Rasool Burki", fata: "FATA Out", district: "South Waziristan upper" },
+            { name: "Muhammad Unalb", fatherName: "Sheikh Rasheed Khan", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "Shahkar Burki", fatherName: "Nisar Ahmad", fata: "FATA In", district: "Upper SW" },
+            { name: "Shahkar Burki", fatherName: "Nisar Ahmad", fata: "FATA In", district: "South Waziristan Upper" },
+            { name: "Amjad", fatherName: "Maiz ud din", fata: "FATA Out", district: "South waziristan upper" },
+            { name: "Raza Uddin", fatherName: "Shahab Uddin", fata: "FATA In", district: "Upper South Waziristan" },
+            { name: "Noor Ullah", fatherName: "Sunat khan", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "Mujeeb", fatherName: "sher qayum", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "Atta ur Rehman", fatherName: "Shams Ullah", fata: "FATA In", district: "Upper south Waziristan" },
+            { name: "Hammad Ahmed", fatherName: "Zain Ullah", fata: "FATA In", district: "South Waziristan Upper" },
+            { name: "Hammad Ahmed", fatherName: "Zain ullah", fata: "FATA In", district: "South waziristan upper" },
+            { name: "Muhammad Qaiser", fatherName: "Umar Din", fata: "FATA In", district: "South waziristan upper" },
+            { name: "Muhammad burhan shah", fatherName: "Syed Abdulrahim shah", fata: "FATA In", district: "Upper south Waziristan" },
+            { name: "Maria Gul", fatherName: "Haji Manshah", fata: "FATA In", district: "SWTD Upper" },
+            { name: "Sohail", fatherName: "Kazim", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "Naveed UL Hassan", fatherName: "Niaz Muhammad", fata: "FATA Out", district: "South Waziristan upper" },
+            { name: "Hamza", fatherName: "Zafar abbas", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "Ikrash", fatherName: "Sami", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "Wahid Khan", fatherName: "Sami ullah", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "Muhammad Anwar", fatherName: "Mahmood", fata: "FATA In", district: "South Waziristan upper" },
+            { name: "SAIF Ali Khan", fatherName: "Khalil Ahmad", fata: "FATA In", district: "South waziristan upper" }
+        ];
+
+        // South Waziristan Upper HEC Data
+        let southWaziristanUpperHECData = [
+            { name: "Ahmed Noor", fatherName: "Jahan Zeb", hecMarks: "78", hec: "85.55", fata: "FATA In" },
+            { name: "Asim Ahmad", fatherName: "Noor Zali", hecMarks: "84", hec: "84.37", fata: "FATA In" },
+            { name: "Muhammad Asim Mehsood", fatherName: "Shahnawaz", hecMarks: "75", hec: "82.67", fata: "FATA In" },
+            { name: "Zia ud Din", fatherName: "Arab Khan", hecMarks: "71", hec: "82.27", fata: "FATA In" },
+            { name: "Hammad Ahmed", fatherName: "Zain Ullah", hecMarks: "67", hec: "80.56", fata: "FATA In" },
+            { name: "M Afnan", fatherName: "Abdullah Khan", hecMarks: "66", hec: "79.82", fata: "FATA In" },
+            { name: "Muhammad Adil", fatherName: "Rasheed Khan", hecMarks: "66", hec: "79.27", fata: "FATA In" },
+            { name: "Shams ur Rehman", fatherName: "Izat Gull", hecMarks: "67", hec: "78.54", fata: "FATA In" },
+            { name: "Nimra Mehsud", fatherName: "Lal Badshah", hecMarks: "76", hec: "76.63", fata: "FATA In" },
+            { name: "Muhammad Aslam", fatherName: "Ismail", hecMarks: "38", hec: "62.78", fata: "FATA In" }
+        ];
+
+        // South Waziristan Lower HEC Data
+        let southWaziristanLowerHECData = [
+            { name: "Sohrab Khan", fatherName: "Noor Muhammad", hecMarks: "67", hec: "78.70", fata: "FATA In" },
+            { name: "Farhad Ali", fatherName: "Ali Khan", hecMarks: "65", hec: "78.69", fata: "FATA In" },
+            { name: "Muhammad Tanveer", fatherName: "Jamshed", hecMarks: "67", hec: "78.36", fata: "FATA In" },
+            { name: "Shams ur Rehman", fatherName: "Muhammad Nabi", hecMarks: "67", hec: "77.83", fata: "FATA In" },
+            { name: "Muhammad Khan", fatherName: "Zahoor ud Din", hecMarks: "61", hec: "76.10", fata: "FATA In" },
+            { name: "Muhammad Shoaib", fatherName: "Mano Khan", hecMarks: "61", hec: "74.20", fata: "FATA In" },
+            { name: "Muhammad Rehman", fatherName: "Ahmad Khanan", hecMarks: "52", hec: "71.35", fata: "FATA In" }
+        ];
+
         // Function to normalize strings for duplicate checking
         function normalizeString(str) {
             return str.toLowerCase().trim().replace(/\s+/g, ' ');
@@ -1112,49 +1253,6 @@
             return false;
         }
 
-        // Add the three requested students to Bajaur data
-        const requestedStudents = [
-            { name: "Muheeb Ullah", fatherName: "Abdul Ghafoor Khan", mdcat: "90.22", hec: "90.22", fata: "FATA In" },
-            { name: "Riaz Khan", fatherName: "", mdcat: "94.94", hec: "80.45", fata: "FATA In" },
-            { name: "Sana ullah", fatherName: "", mdcat: "90.00", hec: "80.78", fata: "FATA In" }
-        ];
-
-        // Add new data while checking for duplicates
-        newData.forEach(newStudent => {
-            let isDuplicateFound = false;
-            
-            // Check against existing data
-            for (let i = 0; i < bajaurMeritListData.length; i++) {
-                if (isDuplicate(bajaurMeritListData[i], newStudent)) {
-                    isDuplicateFound = true;
-                    break;
-                }
-            }
-            
-            // If not a duplicate, add to the list
-            if (!isDuplicateFound) {
-                bajaurMeritListData.push(newStudent);
-            }
-        });
-
-        // Add requested students while checking for duplicates
-        requestedStudents.forEach(newStudent => {
-            let isDuplicateFound = false;
-            
-            // Check against existing data
-            for (let i = 0; i < bajaurMeritListData.length; i++) {
-                if (isDuplicate(bajaurMeritListData[i], newStudent)) {
-                    isDuplicateFound = true;
-                    break;
-                }
-            }
-            
-            // If not a duplicate, add to the list
-            if (!isDuplicateFound) {
-                bajaurMeritListData.push(newStudent);
-            }
-        });
-
         // Function to sort merit list by HEC in descending order
         function sortMeritListByHEC(data) {
             return data.sort((a, b) => {
@@ -1181,6 +1279,29 @@
             return result;
         }
 
+        // Remove Salam Alaikum from Bajaur data
+        bajaurMeritListData = bajaurMeritListData.filter(student => 
+            !(normalizeString(student.name) === "salam alaikum" && parseFloat(student.hec) === 79.18)
+        );
+
+        // Add new data while checking for duplicates
+        newData.forEach(newStudent => {
+            let isDuplicateFound = false;
+            
+            // Check against existing data
+            for (let i = 0; i < bajaurMeritListData.length; i++) {
+                if (isDuplicate(bajaurMeritListData[i], newStudent)) {
+                    isDuplicateFound = true;
+                    break;
+                }
+            }
+            
+            // If not a duplicate, add to the list
+            if (!isDuplicateFound) {
+                bajaurMeritListData.push(newStudent);
+            }
+        });
+
         // Sort and remove duplicates for Bajaur
         bajaurMeritListData = sortMeritListByHEC([...bajaurMeritListData]);
         bajaurMeritListData = removeDuplicates(bajaurMeritListData);
@@ -1188,6 +1309,17 @@
         // Sort KHYBER data by HEC in descending order
         khyberMeritListData = sortMeritListByHEC([...khyberMeritListData]);
         khyberMeritListData = removeDuplicates(khyberMeritListData);
+
+        // Sort South Waziristan Upper HEC data
+        southWaziristanUpperHECData = sortMeritListByHEC([...southWaziristanUpperHECData]);
+        southWaziristanUpperHECData = removeDuplicates(southWaziristanUpperHECData);
+
+        // Sort South Waziristan Lower HEC data
+        southWaziristanLowerHECData = sortMeritListByHEC([...southWaziristanLowerHECData]);
+        southWaziristanLowerHECData = removeDuplicates(southWaziristanLowerHECData);
+
+        // Remove duplicates from image data
+        southWaziristanUpperImageData = removeDuplicates(southWaziristanUpperImageData);
 
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize the application
@@ -1251,11 +1383,18 @@
                     filterMeritTable('khyber');
                 });
                 
-                document.getElementById('south-waziristan-clear-search').addEventListener('click', () => {
-                    document.getElementById('south-waziristan-name-search').value = '';
-                    document.getElementById('south-waziristan-aggregate-search').value = '';
-                    document.getElementById('south-waziristan-father-search').value = '';
-                    filterMeritTable('south-waziristan');
+                document.getElementById('sw-upper-clear-search').addEventListener('click', () => {
+                    document.getElementById('sw-upper-name-search').value = '';
+                    document.getElementById('sw-upper-father-search').value = '';
+                    document.getElementById('sw-upper-district-search').value = '';
+                    filterMeritTable('sw-upper');
+                });
+                
+                document.getElementById('sw-lower-clear-search').addEventListener('click', () => {
+                    document.getElementById('sw-lower-name-search').value = '';
+                    document.getElementById('sw-lower-father-search').value = '';
+                    document.getElementById('sw-lower-aggregate-search').value = '';
+                    filterMeritTable('sw-lower');
                 });
             }
             
@@ -1275,17 +1414,11 @@
             }
             
             function loadMeritListData() {
-                // Sort Bajaur data by HEC in descending order
-                const sortedBajaurData = sortMeritListByHEC([...bajaurMeritListData]);
-                
-                // Remove duplicates from Bajaur list
-                const uniqueBajaurData = removeDuplicates(sortedBajaurData);
-                
                 // Populate Bajaur tab table
                 const bajaurBody = document.getElementById('bajaur-merit-body');
                 bajaurBody.innerHTML = '';
                 
-                uniqueBajaurData.forEach((student, index) => {
+                bajaurMeritListData.forEach((student, index) => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td class="merit-rank">${index + 1}</td>
@@ -1299,19 +1432,13 @@
                 });
                 
                 // Store the data for search functionality
-                window.bajaurMeritData = uniqueBajaurData;
-                
-                // Sort KHYBER data by HEC in descending order
-                const sortedKhyberData = sortMeritListByHEC([...khyberMeritListData]);
-                
-                // Remove duplicates from KHYBER list
-                const uniqueKhyberData = removeDuplicates(sortedKhyberData);
+                window.bajaurMeritData = bajaurMeritListData;
                 
                 // Populate KHYBER tab table
                 const khyberBody = document.getElementById('khyber-merit-body');
                 khyberBody.innerHTML = '';
                 
-                uniqueKhyberData.forEach((student, index) => {
+                khyberMeritListData.forEach((student, index) => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td class="merit-rank">${index + 1}</td>
@@ -1325,7 +1452,75 @@
                 });
                 
                 // Store the data for search functionality
-                window.khyberMeritData = uniqueKhyberData;
+                window.khyberMeritData = khyberMeritListData;
+                
+                // Populate South Waziristan Upper tab table
+                const swUpperBody = document.getElementById('sw-upper-merit-body');
+                swUpperBody.innerHTML = '';
+                
+                // Combine image data with HEC data where possible
+                const combinedSWUpperData = [...southWaziristanUpperImageData];
+                
+                combinedSWUpperData.forEach((student, index) => {
+                    const row = document.createElement('tr');
+                    // Try to find matching HEC data
+                    const hecData = southWaziristanUpperHECData.find(s => 
+                        normalizeString(s.name) === normalizeString(student.name) ||
+                        normalizeString(s.fatherName) === normalizeString(student.fatherName)
+                    );
+                    
+                    row.innerHTML = `
+                        <td class="merit-rank">${index + 1}</td>
+                        <td class="merit-name">${student.name}</td>
+                        <td class="merit-father">${student.fatherName || 'N/A'}</td>
+                        <td class="merit-score">${hecData ? hecData.hecMarks : 'N/A'}</td>
+                        <td class="merit-aggregate">${hecData ? hecData.hec : 'N/A'}</td>
+                        <td>${student.district}</td>
+                        <td class="merit-status">${student.fata}</td>
+                    `;
+                    swUpperBody.appendChild(row);
+                });
+                
+                // Populate South Waziristan Upper HEC table
+                const swUpperHECBody = document.getElementById('sw-upper-hec-body');
+                swUpperHECBody.innerHTML = '';
+                
+                southWaziristanUpperHECData.forEach((student, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="merit-rank">${index + 1}</td>
+                        <td class="merit-name">${student.name}</td>
+                        <td class="merit-father">${student.fatherName || 'N/A'}</td>
+                        <td class="merit-score">${student.hecMarks}</td>
+                        <td class="merit-aggregate">${student.hec}</td>
+                        <td class="merit-status">${student.fata}</td>
+                    `;
+                    swUpperHECBody.appendChild(row);
+                });
+                
+                // Store the data for search functionality
+                window.swUpperMeritData = combinedSWUpperData;
+                window.swUpperHECData = southWaziristanUpperHECData;
+                
+                // Populate South Waziristan Lower tab table
+                const swLowerBody = document.getElementById('sw-lower-merit-body');
+                swLowerBody.innerHTML = '';
+                
+                southWaziristanLowerHECData.forEach((student, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="merit-rank">${index + 1}</td>
+                        <td class="merit-name">${student.name}</td>
+                        <td class="merit-father">${student.fatherName || 'N/A'}</td>
+                        <td class="merit-score">${student.hecMarks}</td>
+                        <td class="merit-aggregate">${student.hec}</td>
+                        <td class="merit-status">${student.fata}</td>
+                    `;
+                    swLowerBody.appendChild(row);
+                });
+                
+                // Store the data for search functionality
+                window.swLowerMeritData = southWaziristanLowerHECData;
                 
                 updateSearchStats();
                 
@@ -1343,10 +1538,17 @@
                     });
                 });
                 
-                // Setup search input listeners for South Waziristan (placeholder)
-                ['south-waziristan-name-search', 'south-waziristan-aggregate-search', 'south-waziristan-father-search'].forEach(id => {
+                // Setup search input listeners for South Waziristan Upper
+                ['sw-upper-name-search', 'sw-upper-father-search', 'sw-upper-district-search'].forEach(id => {
                     document.getElementById(id).addEventListener('input', () => {
-                        filterMeritTable('south-waziristan');
+                        filterMeritTable('sw-upper');
+                    });
+                });
+                
+                // Setup search input listeners for South Waziristan Lower
+                ['sw-lower-name-search', 'sw-lower-father-search', 'sw-lower-aggregate-search'].forEach(id => {
+                    document.getElementById(id).addEventListener('input', () => {
+                        filterMeritTable('sw-lower');
                     });
                 });
             }
@@ -1356,7 +1558,8 @@
             }
             
             function filterMeritTable(tableId) {
-                let tableElement, data, nameSearch, aggregateSearch, fatherSearch, statsElement;
+                let tableElement, data, statsElement;
+                let nameSearch = '', aggregateSearch = '', fatherSearch = '', districtSearch = '';
                 
                 switch(tableId) {
                     case 'bajaur':
@@ -1375,15 +1578,22 @@
                         fatherSearch = document.getElementById('khyber-father-search').value.toLowerCase();
                         statsElement = document.getElementById('khyber-search-stats');
                         break;
-                    case 'south-waziristan':
-                        tableElement = document.getElementById('south-waziristan-merit-table');
-                        data = []; // Empty for now
-                        nameSearch = document.getElementById('south-waziristan-name-search').value.toLowerCase();
-                        aggregateSearch = document.getElementById('south-waziristan-aggregate-search').value.toLowerCase();
-                        fatherSearch = document.getElementById('south-waziristan-father-search').value.toLowerCase();
-                        statsElement = document.getElementById('south-waziristan-search-stats');
-                        statsElement.textContent = 'No data available yet';
-                        return;
+                    case 'sw-upper':
+                        tableElement = document.getElementById('sw-upper-merit-table');
+                        data = window.swUpperMeritData || [];
+                        nameSearch = document.getElementById('sw-upper-name-search').value.toLowerCase();
+                        fatherSearch = document.getElementById('sw-upper-father-search').value.toLowerCase();
+                        districtSearch = document.getElementById('sw-upper-district-search').value.toLowerCase();
+                        statsElement = document.getElementById('sw-upper-search-stats');
+                        break;
+                    case 'sw-lower':
+                        tableElement = document.getElementById('sw-lower-merit-table');
+                        data = window.swLowerMeritData || [];
+                        nameSearch = document.getElementById('sw-lower-name-search').value.toLowerCase();
+                        fatherSearch = document.getElementById('sw-lower-father-search').value.toLowerCase();
+                        aggregateSearch = document.getElementById('sw-lower-aggregate-search').value.toLowerCase();
+                        statsElement = document.getElementById('sw-lower-search-stats');
+                        break;
                     default:
                         return;
                 }
@@ -1396,84 +1606,47 @@
                     const cells = rows[i].getElementsByTagName('td');
                     const name = cells[1].textContent.toLowerCase();
                     const father = cells[2].textContent.toLowerCase();
-                    const aggregate = cells[4].textContent.toLowerCase();
+                    const aggregate = cells[4] ? cells[4].textContent.toLowerCase() : '';
+                    const district = cells[5] ? cells[5].textContent.toLowerCase() : '';
                     
                     const nameMatch = name.includes(nameSearch);
                     const aggregateMatch = aggregate.includes(aggregateSearch);
                     const fatherMatch = father.includes(fatherSearch);
+                    const districtMatch = district.includes(districtSearch);
                     
-                    if (nameMatch && aggregateMatch && fatherMatch) {
-                        rows[i].style.display = '';
-                        visibleCount++;
+                    if (tableId === 'sw-upper') {
+                        if (nameMatch && fatherMatch && districtMatch) {
+                            rows[i].style.display = '';
+                            visibleCount++;
+                        } else {
+                            rows[i].style.display = 'none';
+                        }
                     } else {
-                        rows[i].style.display = 'none';
+                        if (nameMatch && aggregateMatch && fatherMatch) {
+                            rows[i].style.display = '';
+                            visibleCount++;
+                        } else {
+                            rows[i].style.display = 'none';
+                        }
                     }
                 }
                 
                 // Update search stats
                 const totalCount = data.length;
                 statsElement.textContent = `Showing ${visibleCount} of ${totalCount} students`;
-                
-                // Highlight search terms
-                highlightSearchTerms(tableElement, nameSearch, aggregateSearch, fatherSearch);
-            }
-            
-            function highlightSearchTerms(tableElement, nameSearch, aggregateSearch, fatherSearch) {
-                const rows = tableElement.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-                
-                for (let i = 0; i < rows.length; i++) {
-                    if (rows[i].style.display === 'none') continue;
-                    
-                    const cells = rows[i].getElementsByTagName('td');
-                    
-                    // Clear previous highlights
-                    cells[1].innerHTML = cells[1].textContent;
-                    cells[2].innerHTML = cells[2].textContent;
-                    cells[4].innerHTML = cells[4].textContent;
-                    
-                    // Highlight name
-                    if (nameSearch) {
-                        const nameText = cells[1].textContent;
-                        const highlightedName = nameText.replace(
-                            new RegExp(`(${escapeRegExp(nameSearch)})`, 'gi'),
-                            '<span style="background-color: #ffd700; padding: 1px 2px; border-radius: 2px;">$1</span>'
-                        );
-                        cells[1].innerHTML = highlightedName;
-                    }
-                    
-                    // Highlight father name
-                    if (fatherSearch) {
-                        const fatherText = cells[2].textContent;
-                        const highlightedFather = fatherText.replace(
-                            new RegExp(`(${escapeRegExp(fatherSearch)})`, 'gi'),
-                            '<span style="background-color: #90ee90; padding: 1px 2px; border-radius: 2px;">$1</span>'
-                        );
-                        cells[2].innerHTML = highlightedFather;
-                    }
-                    
-                    // Highlight aggregate
-                    if (aggregateSearch) {
-                        const aggregateText = cells[4].textContent;
-                        const highlightedAggregate = aggregateText.replace(
-                            new RegExp(`(${escapeRegExp(aggregateSearch)})`, 'gi'),
-                            '<span style="background-color: #ffb6c1; padding: 1px 2px; border-radius: 2px;">$1</span>'
-                        );
-                        cells[4].innerHTML = highlightedAggregate;
-                    }
-                }
-            }
-            
-            function escapeRegExp(string) {
-                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
             }
             
             function updateSearchStats() {
                 // Update Bajaur stats
                 const bajaurStats = document.getElementById('bajaur-search-stats');
                 const khyberStats = document.getElementById('khyber-search-stats');
+                const swUpperStats = document.getElementById('sw-upper-search-stats');
+                const swLowerStats = document.getElementById('sw-lower-search-stats');
                 
                 const bajaurCount = window.bajaurMeritData ? window.bajaurMeritData.length : 0;
                 const khyberCount = window.khyberMeritData ? window.khyberMeritData.length : 0;
+                const swUpperCount = window.swUpperMeritData ? window.swUpperMeritData.length : 0;
+                const swLowerCount = window.swLowerMeritData ? window.swLowerMeritData.length : 0;
                 
                 if (bajaurStats) {
                     bajaurStats.textContent = `Showing ${bajaurCount} students`;
@@ -1481,6 +1654,14 @@
                 
                 if (khyberStats) {
                     khyberStats.textContent = `Showing ${khyberCount} students`;
+                }
+                
+                if (swUpperStats) {
+                    swUpperStats.textContent = `Showing ${swUpperCount} students`;
+                }
+                
+                if (swLowerStats) {
+                    swLowerStats.textContent = `Showing ${swLowerCount} students`;
                 }
             }
             
